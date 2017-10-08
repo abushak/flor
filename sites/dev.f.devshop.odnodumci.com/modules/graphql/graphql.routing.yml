@@ -1,0 +1,23 @@
+graphql.request:
+  path: '/graphql'
+  defaults:
+    _graphql:
+      single: '\Drupal\graphql\Controller\RequestController::handleRequest'
+      multiple: '\Drupal\graphql\Controller\RequestController::handleBatchRequest'
+  requirements:
+    _permission: 'execute graphql requests'
+
+graphql.explorer:
+  path: '/graphql/explorer'
+  defaults:
+    _controller: '\Drupal\graphql\Controller\ExplorerController::viewExplorer'
+  requirements:
+    _permission: 'use graphql explorer'
+
+graphql.config_page:
+  path: '/admin/config/graphql'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'GraphQL'
+  requirements:
+    _permission: 'administer site configuration'

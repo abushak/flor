@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for Responsive Menus.
+ */
+
+///**
+// * Implements hook_enable().
+// */
+//function responsive_menus_enable() {
+//  // Need to clear caches for Context to see our new reaction.
+//  cache_clear_all('plugins:context:plugins', 'cache');
+//}

@@ -1,0 +1,227 @@
+<?php
+
+use Drupal\Component\Utility\SortArray;
+use Drupal\Core\Render\Element;
+use Drupal\views_fieldsets\Plugin\views\field\Fieldset;
+use Drupal\views_ui\ViewUI;
+
+/**
+ * Implements hook_theme().
+ */
+function views_fieldsets_theme() {
+  $vars = ['fields' => [], 'classes' => ''];
+  $path = drupal_get_path('module', 'views_fieldsets');
+
+  $hooks['views_fieldsets_fieldset'] = [
+    'variables' => $vars + ['legend' => '', 'collapsible' => TRUE, 'collapsed' => FALSE],
+    'template' => 'views-fieldsets-fieldset',
+    'path' => $path,
+  ];
+
+  $hooks['views_fieldsets_details'] = [
+    'variables' => $vars + ['legend' => '', 'collapsed' => FALSE],
+    'template' => 'views-fieldsets-details',
+    'path' => $path,
+  ];
+
+  $hooks['views_fieldsets_div'] = [
+    'variables' => $vars,
+    'template' => 'views-fieldsets-div',
+    'path' => $path,
+  ];
+
+  return $hooks;
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function views_fieldsets_views_data() {
+  $data['views']['fieldset'] = [
+    'title' => t('Fieldset'),
+    'help' => t('Create a group of fields.'),
+    'field' => [
+      'id' => 'fieldset',
+    ],
+  ];
+
+  return $data;
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function views_fieldsets_preprocess_views_view_fields(&$vars) {
+  $view = $vars['view'];
+
+  Fieldset::replaceFieldsetHandlers($view, $vars['fields'], $vars['row']);
+}
+
+/**
+ * Implements hook_views_ui_display_tab_alter().
+ */
+function views_fieldsets_views_ui_display_tab_alter(&$build, ViewUI $ui_view, $display_id) {
+  $view = $ui_view->getExecutable();
+  $view->build($display_id);
+  $fieldsets = Fieldset::getAllFieldsets($view);
+
+  foreach ($build['details']['columns']['first']['fields']['fields'] as $field_name => &$renderable) {
+    // Noticable fieldsets.
+    if (isset($fieldsets[$field_name])) {
+      $renderable['#class'][] = 'views-fieldsets-fieldset';
+    }
+
+    // Indentation for all fields.
+    $renderable['#class'][] = 'views-fieldsets-level-' . count(Fieldset::getFieldParents($view, $field_name));
+
+    unset($renderable);
+  }
+
+  $build['details']['#attached']['library'][] = 'views_fieldsets/admin';
+}
+
+/**
+ * Implements hook_preprocess_views_ui_display_tab_setting().
+ */
+function views_fieldsets_preprocess_views_ui_display_tab_setting(&$vars) {
+  // Copy #class from views_fieldsets_views_ui_display_tab_alter() to renderable #attributes.
+  if (!empty($vars['class'])) {
+    $vars['attributes'] += ['class' => []];
+    $vars['attributes']['class'] = array_merge($vars['attributes']['class'], $vars['class']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for views_ui_rearrange_form().
+ */
+function views_fieldsets_form_views_ui_rearrange_form_alter(&$form, &$form_state) {
+  $ui_view = $form_state->get('view');
+  $view = $ui_view->getExecutable();
+  $view->build($form_state->get('display_id'));
+  $fieldsets = Fieldset::getAllFieldsets($view);
+
+  $debug_tabledrag = [
+    // '#type' => 'textfield',
+    // '#size' => 4,
+    // '#theme_wrappers' => [],
+  ];
+
+  foreach (Element::children($form['fields']) as $field_name) {
+    $row = &$form['fields'][$field_name];
+    if (isset($fieldsets[$field_name])) {
+      $row['#attributes']['class'][] = 'views-fieldsets-fieldset';
+    }
+    else {
+      $row['#attributes']['class'][] = 'tabledrag-leaf';
+    }
+
+    $depth = count(Fieldset::getFieldParents($view, $field_name));
+
+    $row['name'] = [
+      'indent' => $depth > 0 ? ['#theme' => 'indentation', '#size' => $depth] : [],
+      'name' => $row['name'],
+      'field_name' => [
+        '#type' => 'hidden',
+        '#value' => $field_name,
+        '#attributes' => ['class' => ['field-name']],
+      ],
+      'hierarchy' => $debug_tabledrag + [
+        '#type' => 'hidden',
+        '#default_value' => Fieldset::getFieldParent($view, $field_name),
+        '#attributes' => ['class' => ['hierarchy']],
+      ],
+      'depth' => $debug_tabledrag + [
+        '#type' => 'hidden',
+        '#default_value' => $depth,
+        '#attributes' => ['class' => ['depth']],
+      ],
+    ];
+
+    unset($row);
+  }
+
+  $form['fields']['#tabledrag'] = [];
+  $form['fields']['#tabledrag'][] = array(
+    'action' => 'match',
+    'relationship' => 'parent',
+    'group' => 'hierarchy',
+    'subgroup' => 'hierarchy',
+    'source' => 'field-name',
+    'hidden' => FALSE,
+  );
+  $form['fields']['#tabledrag'][] = array(
+    'action' => 'depth',
+    'relationship' => 'group',
+    'group' => 'depth',
+    'hidden' => FALSE,
+  );
+  $form['fields']['#tabledrag'][] = array(
+    'action' => 'order',
+    'relationship' => 'sibling',
+    'group' => 'weight',
+  );
+
+  $form['actions']['submit']['#submit'][] = 'views_fieldsets_views_ui_rearrange_form_submit';
+}
+
+/**
+ * Submit handler for views_ui_rearrange_form().
+ */
+function views_fieldsets_views_ui_rearrange_form_submit($form, $form_state) {
+  $ui_view = $form_state->get('view');
+  $display_id = $form_state->get('display_id');
+  $view = $ui_view->getExecutable();
+  $view->setDisplay($display_id);
+  $view->build($display_id);
+  $fieldsets = Fieldset::getAllFieldsets($view);
+
+  // Sort 1-dimensionally (wrong overall, but right per level).
+  $input_fields = $form_state->getValue('fields');
+  uasort($input_fields, [SortArray::class, 'sortByWeightElement']);
+  $fields_order = array_keys($input_fields);
+
+  // Create [field => parent] map.
+  $input_fields = array_map(function($field) {
+    return $field['name']['hierarchy'];
+  }, $input_fields);
+
+  // Sort overall: level by level, n-dimensionally following the tree down.
+  $input_fields_weights = [];
+  foreach ($input_fields as $field_name => $fieldset) {
+    $parents = Fieldset::getUIFieldParents($input_fields, $field_name);
+    $id = array_reverse(array_merge([$field_name], $parents));
+    $id = array_map(function($field) use ($fields_order) {
+      return array_search($field, $fields_order);
+    }, $id);
+    $id = implode('.', $id);
+    $input_fields_weights[$field_name] = $id;
+  }
+  uasort($input_fields_weights, 'strnatcmp');
+  $input_fields_weights = array_flip(array_keys($input_fields_weights));
+
+  // Create hierarchy (fieldset-based), in the right order.
+  $hierarchy = array_combine(array_keys($fieldsets), array_fill(0, count($fieldsets), []));
+  foreach ($input_fields_weights as $field_name => $x) {
+    if ($parent = $input_fields[$field_name]) {
+      $hierarchy[$parent][] = $field_name;
+    }
+  }
+
+  // Fetch fields config from relevant display (just saved by Drupal\views_ui\Form\Ajax\Rearrange).
+  $display = $view->displayHandlers->get($display_id);
+  $display_fields = $display->getOption('fields');
+
+  // Update hierarchy into all fieldset fields, in the right order.
+  foreach ($hierarchy as $fieldset_name => $children) {
+    $display_fields[$fieldset_name]['fields'] = $children;
+  }
+
+  // Sort the fields storage in the right order too!
+  uksort($display_fields, function($a, $b) use ($input_fields_weights) {
+    return $input_fields_weights[$a] - $input_fields_weights[$b];
+  });
+
+  // Save and save.
+  $display->setOption('fields', $display_fields);
+  $ui_view->cacheSet();
+}

@@ -1,0 +1,5 @@
+views_ef_fieldset.styling:
+  version: VERSION
+  css:
+    theme:
+      css/views_ef_fieldset.css: {}

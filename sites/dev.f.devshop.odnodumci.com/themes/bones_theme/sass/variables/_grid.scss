@@ -1,0 +1,186 @@
+// ----
+// Sass (v3.3.0.rc.2)
+// Compass (v1.0.0.alpha.17)
+// Breakpoint (v2.4.1)
+// Susy (v2.0.0.beta.3)
+// ----
+
+@import "compass";
+@import "compass/reset";
+@import "susy";
+@import "breakpoint";
+
+
+// Small
+// -----
+
+$susy: (
+  columns: 4,
+  column-width: 4em,
+  gutter-position: inside,
+);
+
+$medium: layout(8);
+$large: layout(12);
+
+.layout-container {
+  @include container(100%);
+  overflow: hidden;
+}
+
+#block-bones-branding { @include container (20%); }
+#block-bones-main-menu { @include container (5%); }
+
+.layout-left-sidebar { @include span(3 at span(-3 wide) isolate); }
+.layout-content { @include span(full at 1 isolate); }
+.layout-right-sidebar {
+  @include span(3 at 100% isolate);
+  margin-right: -200%;
+}
+
+.show-left {
+  &:checked {
+    ~ .layout-left-sidebar { @include push(0); }
+    ~ .layout-content { @include push(3); }
+  }
+}
+
+.show-right {
+  &:checked {
+    ~ .layout-left-sidebar { @include pull(6); }
+    ~ .layout-content { @include pull(3); }
+    ~ .layout-right-sidebar { @include push(1); }
+  }
+}
+
+
+// Medium
+// ------
+
+@include susy-breakpoint(40em, $medium) {
+	#block-bones-branding { @include container (20%); }
+	#block-bones-main-menu { @include container (55%);float:left; }
+  .layout-left-sidebar { @include span(3 at 1 isolate); }
+  .layout-content { @include span(5 at 4 isolate); }
+
+  .show-left {
+    &:checked {
+      ~ .layout-left-sidebar { @include push(0); }
+      ~ .layout-content { @include push(3); }
+    }
+  }
+
+  .show-right {
+    &:checked {
+      ~ .layout-left-sidebar { @include pull(3); }
+      ~ .layout-content { @include push(0); }
+      ~ .layout-right-sidebar { @include push(5); }
+    }
+  }
+
+  [for="left"] { display: none; }
+}
+
+
+// Large
+// ------
+
+@include susy-breakpoint(60em, $large) {
+
+	#block-bones-branding { @include container (20%); }
+	#block-bones-main-menu { @include container (65%);float:left; }
+  .layout-left-sidebar { @include span(3 at 1 isolate); }
+  .layout-content { @include span(6 at 4 isolate); }
+  .layout-right-sidebar { @include span(3 at 10 isolate); }
+
+  .show-left {
+    &:checked {
+      ~ .layout-content { @include push(3); }
+    }
+  }
+
+  .show-right {
+    &:checked {
+      ~ .layout-left-sidebar { @include push(0); }
+      ~ .layout-content { @include push(3); }
+      ~ .layout-right-sidebar { @include push(9); }
+    }
+  }
+
+  [for="right"] { display: none; }
+}
+
+
+// Styles
+// ------
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.toggle {
+  cursor: pointer;
+  color: blue;
+  &:hover, &:focus, &:active {
+    color: red;
+  }
+}
+
+
+
+[for] {
+  position: relative;
+  z-index: 10;
+  padding: 0 1em;
+}
+
+[for="left"] { float: left; }
+[for="right"] { float: right; }
+
+.layout-left-sidebar, .layout-content, .layout-right-sidebar {
+  @include transition(all 300ms);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  height: 12em;
+}
+
+.layout-left-sidebar {
+  background: rgba(red, .25);
+}
+
+.layout-right-sidebar {
+  background: rgba(yellow, .5);
+}
+
+footer {
+  @include break;
+}
+
+.path-frontpage {
+
+@include susy-breakpoint(60em, $large) {
+  .layout-left-sidebar { @include span(2 at span(-3 wide) isolate); }
+  .layout-content { @include span(11 at 1 isolate); }
+  /*.layout-right-sidebar { @include span(3 at 10 isolate); }*/
+
+.show-left {
+  &:checked {
+    ~ .layout-left-sidebar { @include push(-1); }
+    ~ .layout-content { @include push(2); }
+  }
+}
+  .show-right {
+    &:checked {
+      ~ .layout-left-sidebar { @include push(0); }
+      ~ .layout-content { @include push(3); }
+      ~ .layout-right-sidebar { @include push(9); }
+    }
+  }
+
+  [for="left"] { display: block; }
+}
+
+
+
+}

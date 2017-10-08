@@ -1,0 +1,12 @@
+use CommerceGuys\Intl\Currency\CurrencyRepository;
+use CommerceGuys\Pricing\Price;
+
+$currencyRepository = new CurrencyRepository;
+$eur = $currencyRepository->get('EUR');
+$usd = $currencyRepository->get('USD');
+
+// Use an external library to get an actual exchange rate.
+$rate = 1;
+$eurPrice = new Price('100', $eur);
+$usdPrice = $eurPrice->convert($usd, $rate);
+echo $usdPrice; 

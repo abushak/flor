@@ -1,0 +1,19 @@
+global-css:
+  css:
+    theme:
+      css/bones.styles.css: {}
+
+
+
+global-js:
+  js:
+    js/collapsible/jquery.collapsible.min.js: {}
+    js/bones.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+
+

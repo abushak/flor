@@ -1,0 +1,7 @@
+<details class="{{ classes }}" {% if not collapsed %}open{% endif %}>
+  {% if legend %}
+    <summary>{{ legend }}</summary>
+  {% endif %}
+
+  {% include 'views-view-fields.html.twig' %}
+</details>

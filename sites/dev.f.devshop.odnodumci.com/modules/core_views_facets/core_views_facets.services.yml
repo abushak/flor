@@ -1,0 +1,13 @@
+services:
+  plugin.manager.core_views_facets.exposed_filter_types:
+    class: Drupal\core_views_facets\CoreViewsFacetsExposedFilterTypeManager
+    parent: default_plugin_manager
+  plugin.manager.core_views_facets.contextual_filter_types:
+    class: Drupal\core_views_facets\CoreViewsFacetsContextualFilterTypeManager
+    parent: default_plugin_manager
+
+  core_views_facets.ajax_subscriber:
+    class: Drupal\core_views_facets\EventSubscriber\AjaxResponseSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments: ['@facets.manager', '@request_stack']

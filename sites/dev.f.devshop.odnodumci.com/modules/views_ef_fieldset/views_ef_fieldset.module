@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Main module file.
+ */
+
+use Drupal\views_ef_fieldset\ViewsEFFieldsetData;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function views_ef_fieldset_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id) {
+  if ($display = $form_state->get('display')) {
+    if ($options = $display['display_options']['display_extenders']['views_ef_fieldset']['views_ef_fieldset']) {
+      if ((bool) $options['enabled'] == 1) {
+        $form['filters']['#attached']['library'][] = 'views_ef_fieldset/views_ef_fieldset.styling';
+        $viewsEFFieldsetData = new ViewsEFFieldsetData($options['options']['sort'], $form);
+        $form['filters']['children'] = $viewsEFFieldsetData->treeToFAPI();
+        $form['#info']['views_ef_fieldset']['value'] = 'filters';
+      }
+    }
+  }
+}

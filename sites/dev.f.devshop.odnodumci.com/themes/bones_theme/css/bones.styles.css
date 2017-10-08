@@ -1,0 +1,2790 @@
+/* line 1, ../sass/bones.styles.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, form, input,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  box-sizing: border-box;
+}
+
+/* line 5, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 26, ../sass/variables/_grid.scss */
+.layout-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+/* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+.layout-container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 31, ../sass/variables/_grid.scss */
+#block-bones-branding {
+  max-width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+#block-bones-branding:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 32, ../sass/variables/_grid.scss */
+#block-bones-main-menu {
+  max-width: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+#block-bones-main-menu:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 34, ../sass/variables/_grid.scss */
+.layout-left-sidebar {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 75%;
+  float: left;
+  margin-left: -75%;
+  margin-right: -100%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+/* line 35, ../sass/variables/_grid.scss */
+.layout-content {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: -100%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+/* line 36, ../sass/variables/_grid.scss */
+.layout-right-sidebar {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 75%;
+  float: left;
+  margin-left: 100%;
+  margin-right: -100%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  margin-right: -200%;
+}
+
+/* line 43, ../sass/variables/_grid.scss */
+.show-left:checked ~ .layout-left-sidebar {
+  margin-left: 0%;
+}
+/* line 44, ../sass/variables/_grid.scss */
+.show-left:checked ~ .layout-content {
+  margin-left: 75%;
+}
+
+/* line 50, ../sass/variables/_grid.scss */
+.show-right:checked ~ .layout-left-sidebar {
+  margin-left: -150%;
+}
+/* line 51, ../sass/variables/_grid.scss */
+.show-right:checked ~ .layout-content {
+  margin-left: -75%;
+}
+/* line 52, ../sass/variables/_grid.scss */
+.show-right:checked ~ .layout-right-sidebar {
+  margin-left: 25%;
+}
+
+@media (min-width: 40em) {
+  /* line 61, ../sass/variables/_grid.scss */
+  #block-bones-branding {
+    max-width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+  #block-bones-branding:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /* line 62, ../sass/variables/_grid.scss */
+  #block-bones-main-menu {
+    max-width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+  }
+  /* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+  #block-bones-main-menu:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /* line 63, ../sass/variables/_grid.scss */
+  .layout-left-sidebar {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 37.5%;
+    float: left;
+    margin-left: 0;
+    margin-right: -100%;
+    padding-left: 1.25%;
+    padding-right: 1.25%;
+  }
+
+  /* line 64, ../sass/variables/_grid.scss */
+  .layout-content {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 62.5%;
+    float: left;
+    margin-left: 37.5%;
+    margin-right: -100%;
+    padding-left: 1.25%;
+    padding-right: 1.25%;
+  }
+
+  /* line 68, ../sass/variables/_grid.scss */
+  .show-left:checked ~ .layout-left-sidebar {
+    margin-left: 0%;
+  }
+  /* line 69, ../sass/variables/_grid.scss */
+  .show-left:checked ~ .layout-content {
+    margin-left: 37.5%;
+  }
+
+  /* line 75, ../sass/variables/_grid.scss */
+  .show-right:checked ~ .layout-left-sidebar {
+    margin-left: -37.5%;
+  }
+  /* line 76, ../sass/variables/_grid.scss */
+  .show-right:checked ~ .layout-content {
+    margin-left: 0%;
+  }
+  /* line 77, ../sass/variables/_grid.scss */
+  .show-right:checked ~ .layout-right-sidebar {
+    margin-left: 62.5%;
+  }
+
+  /* line 81, ../sass/variables/_grid.scss */
+  [for="left"] {
+    display: none;
+  }
+}
+@media (min-width: 60em) {
+  /* line 90, ../sass/variables/_grid.scss */
+  #block-bones-branding {
+    max-width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+  #block-bones-branding:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /* line 91, ../sass/variables/_grid.scss */
+  #block-bones-main-menu {
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+  }
+  /* line 12, ../../../../../../../../../../usr/local/rvm/gems/ruby-2.1.1/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+  #block-bones-main-menu:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  /* line 92, ../sass/variables/_grid.scss */
+  .layout-left-sidebar {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 25%;
+    float: left;
+    margin-left: 0;
+    margin-right: -100%;
+    padding-left: 0.83333%;
+    padding-right: 0.83333%;
+  }
+
+  /* line 93, ../sass/variables/_grid.scss */
+  .layout-content {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    margin-left: 25%;
+    margin-right: -100%;
+    padding-left: 0.83333%;
+    padding-right: 0.83333%;
+  }
+
+  /* line 94, ../sass/variables/_grid.scss */
+  .layout-right-sidebar {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 25%;
+    float: left;
+    margin-left: 75%;
+    margin-right: -100%;
+    padding-left: 0.83333%;
+    padding-right: 0.83333%;
+  }
+
+  /* line 98, ../sass/variables/_grid.scss */
+  .show-left:checked ~ .layout-content {
+    margin-left: 25%;
+  }
+
+  /* line 104, ../sass/variables/_grid.scss */
+  .show-right:checked ~ .layout-left-sidebar {
+    margin-left: 0%;
+  }
+  /* line 105, ../sass/variables/_grid.scss */
+  .show-right:checked ~ .layout-content {
+    margin-left: 25%;
+  }
+  /* line 106, ../sass/variables/_grid.scss */
+  .show-right:checked ~ .layout-right-sidebar {
+    margin-left: 75%;
+  }
+
+  /* line 110, ../sass/variables/_grid.scss */
+  [for="right"] {
+    display: none;
+  }
+}
+/* line 117, ../sass/variables/_grid.scss */
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+/* line 122, ../sass/variables/_grid.scss */
+.toggle {
+  cursor: pointer;
+  color: blue;
+}
+/* line 125, ../sass/variables/_grid.scss */
+.toggle:hover, .toggle:focus, .toggle:active {
+  color: red;
+}
+
+/* line 132, ../sass/variables/_grid.scss */
+[for] {
+  position: relative;
+  z-index: 10;
+  padding: 0 1em;
+}
+
+/* line 138, ../sass/variables/_grid.scss */
+[for="left"] {
+  float: left;
+}
+
+/* line 139, ../sass/variables/_grid.scss */
+[for="right"] {
+  float: right;
+}
+
+/* line 141, ../sass/variables/_grid.scss */
+.layout-left-sidebar, .layout-content, .layout-right-sidebar {
+  -moz-transition: all 300ms;
+  -o-transition: all 300ms;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  height: 12em;
+}
+
+/* line 148, ../sass/variables/_grid.scss */
+.layout-left-sidebar {
+  background: rgba(255, 0, 0, 0.25);
+}
+
+/* line 152, ../sass/variables/_grid.scss */
+.layout-right-sidebar {
+  background: rgba(255, 255, 0, 0.5);
+}
+
+/* line 156, ../sass/variables/_grid.scss */
+footer {
+  clear: both;
+}
+
+@media (min-width: 60em) {
+  /* line 160, ../sass/variables/_grid.scss */
+  .path-frontpage {
+    /*.layout-right-sidebar { @include span(3 at 10 isolate); }*/
+  }
+  /* line 163, ../sass/variables/_grid.scss */
+  .path-frontpage .layout-left-sidebar {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 16.66667%;
+    float: left;
+    margin-left: -25%;
+    margin-right: -100%;
+    padding-left: 0.83333%;
+    padding-right: 0.83333%;
+  }
+  /* line 164, ../sass/variables/_grid.scss */
+  .path-frontpage .layout-content {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 91.66667%;
+    float: left;
+    margin-left: 0;
+    margin-right: -100%;
+    padding-left: 0.83333%;
+    padding-right: 0.83333%;
+  }
+  /* line 169, ../sass/variables/_grid.scss */
+  .path-frontpage .show-left:checked ~ .layout-left-sidebar {
+    margin-left: -8.33333%;
+  }
+  /* line 170, ../sass/variables/_grid.scss */
+  .path-frontpage .show-left:checked ~ .layout-content {
+    margin-left: 16.66667%;
+  }
+  /* line 175, ../sass/variables/_grid.scss */
+  .path-frontpage .show-right:checked ~ .layout-left-sidebar {
+    margin-left: 0%;
+  }
+  /* line 176, ../sass/variables/_grid.scss */
+  .path-frontpage .show-right:checked ~ .layout-content {
+    margin-left: 25%;
+  }
+  /* line 177, ../sass/variables/_grid.scss */
+  .path-frontpage .show-right:checked ~ .layout-right-sidebar {
+    margin-left: 75%;
+  }
+  /* line 181, ../sass/variables/_grid.scss */
+  .path-frontpage [for="left"] {
+    display: block;
+  }
+}
+
+/* line 1, ../sass/base/_flor.scss */
+.video {
+  width: 100%;
+  z-index: 0;
+  opacity: 1;
+}
+
+/* line 7, ../sass/base/_flor.scss */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 13, ../sass/base/_flor.scss */
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 23, ../sass/base/_flor.scss */
+.video-container:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 45%;
+  left: 45%;
+  width: 46px;
+  height: 36px;
+  z-index: 30;
+  cursor: pointer;
+}
+
+/* line 34, ../sass/base/_flor.scss */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* image poster clicked, player class added using js */
+/* line 37, ../sass/base/_flor.scss */
+.video.player img {
+  display: none;
+}
+
+/* line 38, ../sass/base/_flor.scss */
+.video.player:after {
+  display: none;
+}
+
+/* line 43, ../sass/base/_flor.scss */
+.page {
+  min-height: 100%;
+  background-color: #F0F0F0;
+  position: relative;
+}
+
+/* line 49, ../sass/base/_flor.scss */
+.container-fluid {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  opacity: 1;
+  top: 0px;
+  position: fixed;
+  min-height: 100%;
+}
+
+/* line 60, ../sass/base/_flor.scss */
+.container-wrapper {
+  height: 100%;
+}
+
+/* line 64, ../sass/base/_flor.scss */
+.logged-in .video {
+  display: none;
+}
+
+/* line 69, ../sass/base/_flor.scss */
+.ytp-hide-controls .ytp-watermark {
+  display: none !important;
+}
+
+/* line 70, ../sass/base/_flor.scss */
+.viber {
+  background: url(../assets/phone_button.png) no-repeat 0 center transparent;
+}
+
+/* line 79, ../sass/base/_flor.scss */
+.logged-in .container-fluid .video {
+  display: none;
+}
+
+/* line 82, ../sass/base/_flor.scss */
+.video {
+  width: 100%;
+  z-index: 0;
+  opacity: 1;
+}
+
+/* line 88, ../sass/base/_flor.scss */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 94, ../sass/base/_flor.scss */
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 104, ../sass/base/_flor.scss */
+.video-container:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 45%;
+  left: 45%;
+  width: 46px;
+  height: 36px;
+  z-index: 30;
+  cursor: pointer;
+}
+
+/* line 115, ../sass/base/_flor.scss */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* image poster clicked, player class added using js */
+/* line 118, ../sass/base/_flor.scss */
+.video.player img {
+  display: none;
+}
+
+/* line 119, ../sass/base/_flor.scss */
+.video.player:after {
+  display: none;
+}
+
+/* line 122, ../sass/base/_flor.scss */
+.login-pic {
+  background: url(../images/optimized/user-pic.png) no-repeat 0 center transparent;
+}
+
+/* line 126, ../sass/base/_flor.scss */
+#detach-button {
+  display: none;
+}
+
+/* line 129, ../sass/base/_flor.scss */
+.phone {
+  line-height: 30px;
+  float: left;
+}
+
+/* line 137, ../sass/base/_flor.scss */
+.login {
+  margin-top: 4px;
+  height: 30px;
+  width: 10%;
+  float: right;
+}
+
+/* line 138, ../sass/base/_flor.scss */
+.login-pic {
+  width: auto;
+  height: 15px;
+}
+
+/* line 139, ../sass/base/_flor.scss */
+.lang {
+  color: #ffbfd4;
+  width: 10%;
+  float: left;
+  margin-top: 4px;
+}
+
+/* line 140, ../sass/base/_flor.scss */
+.phone a {
+  font-size: 14px;
+  margin-left: 25px;
+}
+
+/* line 145, ../sass/base/_flor.scss */
+.fa-phone {
+  color: #cc0ec9;
+}
+
+/* line 149, ../sass/base/_flor.scss */
+.contact {
+  width: 9%;
+  float: right;
+}
+/* line 152, ../sass/base/_flor.scss */
+.contact a {
+  font-size: 14px;
+  color: #C6C6C6;
+  margin-right: 6px;
+}
+/* line 153, ../sass/base/_flor.scss */
+.contact a:hover {
+  color: #eb8cc3;
+}
+
+/* line 157, ../sass/base/_flor.scss */
+.social-net {
+  width: auto;
+  border-left: 1px #C6C6C6 solid;
+  border-right: 1px #C6C6C6 solid;
+  float: right;
+  margin-right: 15px;
+}
+/* line 160, ../sass/base/_flor.scss */
+.social-net a {
+  font-size: 18px;
+  color: #C6C6C6;
+  margin-right: 12px;
+  margin-top: 4px;
+}
+/* line 161, ../sass/base/_flor.scss */
+.social-net a:hover {
+  color: #eb8cc3;
+}
+
+/* line 167, ../sass/base/_flor.scss */
+.service-links-r .fa-sign-in {
+  font-size: 21px;
+  position: relative;
+  top: -2px;
+}
+
+/* line 172, ../sass/base/_flor.scss */
+.social-net .fa-facebook {
+  margin-left: 15px;
+}
+
+/* line 175, ../sass/base/_flor.scss */
+.social-net-mob {
+  position: absolute;
+  width: 35px;
+  height: 75px;
+  top: 40%;
+  background-color: #F7F7F7;
+  left: 0;
+  z-index: 9999;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+/* line 185, ../sass/base/_flor.scss */
+.social-net-mob a {
+  font-size: 20px;
+  padding: 5px;
+}
+/* line 187, ../sass/base/_flor.scss */
+.social-net-mob #play {
+  float: left;
+  width: 100%;
+  margin-left: 6px;
+  margin-top: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* line 188, ../sass/base/_flor.scss */
+.social-net-mob #mute {
+  float: left;
+  width: 100%;
+  margin-left: 6px;
+  margin-top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+/* line 189, ../sass/base/_flor.scss */
+.social-net-mob #play:hover {
+  font-size: 17px;
+}
+/* line 190, ../sass/base/_flor.scss */
+.social-net-mob #mute:hover {
+  font-size: 21px;
+}
+
+/* line 193, ../sass/base/_flor.scss */
+.cart-i {
+  float: left;
+}
+
+/* line 194, ../sass/base/_flor.scss */
+.cart-ico {
+  font-size: 26px;
+}
+
+/* line 195, ../sass/base/_flor.scss */
+.line-item-total {
+  margin-top: 3px;
+}
+
+/* line 196, ../sass/base/_flor.scss */
+.line-item-quantity {
+  color: white;
+  font-size: 14px;
+  position: relative;
+  left: -20px;
+}
+
+/* line 197, ../sass/base/_flor.scss */
+.view-empty p {
+  display: none;
+}
+
+/* line 199, ../sass/base/_flor.scss */
+.view-empty .cart a {
+  color: grey !important;
+}
+
+/* line 202, ../sass/base/_flor.scss */
+#skip-link {
+  display: none;
+}
+
+/* line 206, ../sass/base/_flor.scss */
+.service-links {
+  padding-top: 20px;
+}
+
+/* line 209, ../sass/base/_flor.scss */
+.container-fluid > .navbar-header {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+/* line 214, ../sass/base/_flor.scss */
+.navbar-collapse.in {
+  z-index: 9999 !important;
+}
+
+/* line 219, ../sass/base/_flor.scss */
+.navbar {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 225, ../sass/base/_flor.scss */
+.navbar-nav > li > a {
+  color: #a1a1a1;
+}
+
+/* line 228, ../sass/base/_flor.scss */
+.page-user-login .user-login {
+  position: absolute;
+  left: 35%;
+}
+
+/* line 233, ../sass/base/_flor.scss */
+#main {
+  z-index: 0;
+  /*background-color:#fbfbfb;*/
+  width: 100%;
+  position: relative;
+}
+
+/* line 240, ../sass/base/_flor.scss */
+.content-area {
+  display: inline-block;
+}
+
+/* line 241, ../sass/base/_flor.scss */
+.teaser-block {
+  margin-left: 30%;
+}
+
+/* line 242, ../sass/base/_flor.scss */
+.teaser {
+  background: url(../images/optimized/front_pic.png) no-repeat 0 center transparent;
+  width: auto;
+  height: 150px;
+  /*left:31%;*/
+}
+
+/* line 244, ../sass/base/_flor.scss */
+.teaser-title {
+  font-size: 44px;
+  font-weight: bold;
+  color: #26171b;
+  position: relative;
+  top: -55px;
+  margin-left: 10px;
+}
+
+/* line 254, ../sass/base/_flor.scss */
+.bottom-menu .nav > li > a, .for-whom .nav > li > a {
+  padding: 10px 10px;
+  text-transform: uppercase;
+}
+
+/* line 257, ../sass/base/_flor.scss */
+#main-wrapper {
+  background-color: white;
+  position: relative;
+  width: 100%;
+}
+/* line 262, ../sass/base/_flor.scss */
+#main-wrapper #content {
+  margin-top: 30px;
+}
+
+/* line 267, ../sass/base/_flor.scss */
+.block-tb-megamenu {
+  position: relative;
+  top: 0px;
+  margin-left: 24%;
+  margin-top: 18px;
+  margin-bottom: 40px;
+}
+
+/* line 268, ../sass/base/_flor.scss */
+.view-display-products {
+  margin-top: 30px;
+}
+
+/* line 270, ../sass/base/_flor.scss */
+.tb-megamenu .nav > li > a {
+  border-right: none !important;
+  border-top: 0;
+  color: #222 !important;
+  font-weight: 200 !important;
+  padding: 15px 20px;
+  text-shadow: none;
+}
+
+/* line 279, ../sass/base/_flor.scss */
+li.views-fluid-grid-item {
+  color: none;
+  /* background-color: #fbfbfb;*/
+  border: none;
+}
+
+/* line 286, ../sass/base/_flor.scss */
+li.views-fluid-grid-item:hover {
+  color: none;
+  background-color: #fffefe;
+  border: none;
+}
+
+/* line 292, ../sass/base/_flor.scss */
+.form-item-attributes-field-top-sizes {
+  margin-top: 6px;
+}
+
+/* line 296, ../sass/base/_flor.scss */
+button, select {
+  text-transform: none;
+  border-color: white;
+}
+
+/* line 301, ../sass/base/_flor.scss */
+input[type=submit] {
+  -webkit-border-radius: 0px;
+}
+
+/* line 307, ../sass/base/_flor.scss */
+.form-item-attributes-field-top-sizes label {
+  display: none !important;
+}
+
+/* line 308, ../sass/base/_flor.scss */
+.commerce-product-field-commerce-price {
+  font-size: 16px;
+  float: left;
+  margin-left: 26%;
+  color: #333030;
+  margin-right: 28%;
+  width: 4%;
+  margin-top: 5px;
+}
+
+/* line 309, ../sass/base/_flor.scss */
+.field-name-title-field {
+  font-size: 22px;
+  margin-top: 5px;
+  color: #664383;
+  /* min-height: 30px; */
+}
+
+/* line 313, ../sass/base/_flor.scss */
+.field-name-title-field a {
+  color: #777777;
+  letter-spacing: .05em;
+  margin: 5px 0 0 0;
+  text-transform: uppercase;
+  font: normal normal 12px gothambook, Helvetica, Verdana, sans-serif;
+}
+
+/* line 314, ../sass/base/_flor.scss */
+.form-item-attributes-field-top-sizes {
+  float: left;
+}
+
+/* line 315, ../sass/base/_flor.scss */
+.commerce-product-sku {
+  color: grey;
+}
+
+/* line 317, ../sass/base/_flor.scss */
+ul.views-fluid-grid-items-box-shadow li.views-fluid-grid-item {
+  -webkit-box-shadow: 2px 3px 9px #ccc !important;
+  -khtml-box-shadow: 2px 3px 9px #ccc !important;
+  -icab-box-shadow: 2px 3px 9px #ccc !important;
+  -moz-box-shadow: 2px 3px 9px #ccc !important;
+  -o-box-shadow: 2px 3px 9px #ccc !important;
+  box-shadow: 2px 3px 9px #ccc !important;
+    /*background-color: #fffefe;
+	border: none;*/
+}
+
+/* line 328, ../sass/base/_flor.scss */
+.form-item-quantity {
+  width: 35%;
+  float: left;
+}
+/* line 329, ../sass/base/_flor.scss */
+.form-item-quantity label {
+  display: none;
+}
+/* line 332, ../sass/base/_flor.scss */
+.form-item-quantity input {
+  margin-right: 0px !important;
+  width: 25px !important;
+  border-color: white;
+}
+
+/* line 340, ../sass/base/_flor.scss */
+.form-item, .form-actions {
+  margin-top: 0.35em;
+  margin-bottom: 0.6em;
+  border-color: white !important;
+}
+
+/* line 347, ../sass/base/_flor.scss */
+.form-item-field-flowers .item-list ul li {
+  margin: 0 0 0.25em 1.5em;
+  padding: 0;
+  list-style: none;
+  color: grey;
+}
+
+/* line 357, ../sass/base/_flor.scss */
+.ui-spinner {
+  position: relative;
+  border: 0px solid white;
+  display: none;
+}
+
+/* line 366, ../sass/base/_flor.scss */
+.commerce-add-to-cart .form-submit {
+  background-color: #d9cde0;
+  border: 1px solid white;
+  box-shadow: 0 0 0 2px #d9cde0;
+  color: #8f77a9;
+  display: inline-block;
+  font: normal 12px/18px Helvetica,Arial,Sans Serif;
+  height: 28px;
+  margin-right: 6px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 43%;
+  vertical-align: top;
+}
+/* line 382, ../sass/base/_flor.scss */
+.commerce-add-to-cart .form-submit:hover {
+  background-color: #533f5f;
+  box-shadow: 0 0 0 2px #533f5f;
+}
+
+/* line 389, ../sass/base/_flor.scss */
+ul li.leaf {
+  list-style-image: none;
+  list-style-type: none;
+}
+
+/* line 396, ../sass/base/_flor.scss */
+.social-mob {
+  width: 100%;
+  height: 40px;
+  margin-top: 8px;
+}
+
+/* line 398, ../sass/base/_flor.scss */
+.social-mob .fa-facebook, .social-mob .fa-instagram, .social-mob .contact-mob, .login-mob, .lang-mob {
+  float: left;
+  width: 17%;
+}
+
+/* line 402, ../sass/base/_flor.scss */
+.social-mob .fa-facebook {
+  margin-left: 15px;
+}
+
+/* line 403, ../sass/base/_flor.scss */
+.lang-mob {
+  margin-top: 7px;
+  color: white;
+  margin-left: 5px;
+}
+
+/* line 404, ../sass/base/_flor.scss */
+.social-mob .fa-facebook, .social-mob .fa-instagram, .login-mob, .social-mob .fa-envelope-o, .social-mob .fa-sign-in {
+  margin-top: 7px;
+  font-size: 24px;
+  color: white;
+}
+
+/* line 407, ../sass/base/_flor.scss */
+.login-mob {
+  margin-left: 8px;
+  position: relative;
+  top: -7px;
+}
+
+/* line 410, ../sass/base/_flor.scss */
+.contact-mob {
+  margin-top: 0px;
+  margin-left: 5px;
+}
+
+/* line 412, ../sass/base/_flor.scss */
+.service-mob {
+  width: 100%;
+}
+
+/* line 413, ../sass/base/_flor.scss */
+.social-mob .lang {
+  margin-top: 0px;
+}
+
+/* line 414, ../sass/base/_flor.scss */
+.sidr-inner .viber a {
+  margin-left: 25px;
+}
+
+/* line 415, ../sass/base/_flor.scss */
+.sidr-inner .viber {
+  margin-left: 45px;
+  position: relative;
+  padding-top: 10px;
+}
+
+/* line 416, ../sass/base/_flor.scss */
+.sidr-phone {
+  width: 100%;
+  background-color: white;
+  height: 50px;
+}
+
+/* line 417, ../sass/base/_flor.scss */
+.sidr-inner li {
+  list-style: none;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+/*.sidr-inner .last a {padding-left: 0px !important;}*/
+/* line 422, ../sass/base/_flor.scss */
+.sidr-container {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* line 427, ../sass/base/_flor.scss */
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 2px;
+  background-color: #633c9a;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+/* line 436, ../sass/base/_flor.scss */
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* Fade out the second bar */
+/* line 442, ../sass/base/_flor.scss */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+/* line 447, ../sass/base/_flor.scss */
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/*
+#sidr-0-button, #sidr-1-button {
+font-size:50px;
+}*/
+/* line 457, ../sass/base/_flor.scss */
+#sidr-wrapper-0 {
+  /*top:-10px;*/
+  position: relative;
+  margin-left: 10px;
+}
+
+/* line 460, ../sass/base/_flor.scss */
+.filter-toggle {
+  width: 50px;
+  float: right;
+}
+
+/* line 461, ../sass/base/_flor.scss */
+.filter-toggle-block {
+  width: 50%;
+  float: left;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+/* line 467, ../sass/base/_flor.scss */
+.view-id-special_offers .views-row-first {
+  width: 45% !important;
+  height: 330px;
+}
+
+/* line 468, ../sass/base/_flor.scss */
+.view-id-special_offers .views-field-title {
+  top: -110px;
+  position: relative;
+  left: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+/* line 469, ../sass/base/_flor.scss */
+.view-id-special_offers .views-field-title a {
+  color: white;
+}
+
+/* line 470, ../sass/base/_flor.scss */
+.special-offers {
+  margin-top: 20px;
+}
+
+/* line 472, ../sass/base/_flor.scss */
+.view-id-special_offers .views-row-2 {
+  width: 19%;
+}
+
+/* line 473, ../sass/base/_flor.scss */
+.view-id-special_offers .views-row-3 {
+  width: 25%;
+}
+
+/* line 474, ../sass/base/_flor.scss */
+ul.views-fluid-grid-items-height-250 li.views-fluid-grid-item {
+  height: 310px;
+}
+
+/* line 479, ../sass/base/_flor.scss */
+.view-special-offers .views-fluid-grid-item {
+  border: 1px solid black;
+  opacity: 0.5;
+}
+
+/* line 489, ../sass/base/_flor.scss */
+.view-special-offers .views-fluid-grid-item:hover {
+  opacity: 0.99;
+}
+
+/* line 493, ../sass/base/_flor.scss */
+.view-id-special_offers {
+  margin-top: 40px;
+  margin-bottom: 130px;
+  margin-left: 40px;
+}
+
+/* line 502, ../sass/base/_flor.scss */
+.node-type-bouquets {
+  /*#main{margin-top: 250px;}*/
+}
+/* line 504, ../sass/base/_flor.scss */
+.node-type-bouquets .breadcrumb {
+  background-color: none !important;
+}
+
+/* line 509, ../sass/base/_flor.scss */
+#filter-toggle {
+  display: none;
+}
+
+/* line 514, ../sass/base/_flor.scss */
+.node-product-type .commerce-product-field-commerce-price {
+  float: left;
+}
+
+/* line 519, ../sass/base/_flor.scss */
+.slider-inner, .slider-mob {
+  width: 100vw !important;
+  height: 100vh;
+}
+
+/*.logo-y {    position: absolute;
+    right: 35%;
+    z-index: 60;
+    top: 110px;}
+*/
+/* line 526, ../sass/base/_flor.scss */
+.logo-y {
+  position: absolute;
+  z-index: 1;
+  top: 130px;
+  left: 50%;
+  margin-left: -100px;
+}
+
+/* line 534, ../sass/base/_flor.scss */
+.view-front-featured .form-type-checkbox {
+  display: none;
+}
+/* line 535, ../sass/base/_flor.scss */
+.view-front-featured .commerce-product-additional-products {
+  display: none;
+}
+
+/* line 540, ../sass/base/_flor.scss */
+.field-type-commerce-product-reference .form-type-checkbox {
+  position: absolute;
+  top: 600px;
+  margin-left: 0px;
+}
+
+/* line 549, ../sass/base/_flor.scss */
+.node-type-bouquets {
+ /*
+.commerce-add-to-cart {
+	width: 60%;
+	}*/
+}
+/* line 550, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-product-field-commerce-price {
+  font-size: 22px;
+  float: left;
+  margin-left: 0px;
+  color: #333030;
+  width: 4%;
+  margin-top: 5px;
+}
+/* line 560, ../sass/base/_flor.scss */
+.node-type-bouquets em {
+  font-style: normal;
+}
+/* line 564, ../sass/base/_flor.scss */
+.node-type-bouquets .prod-description {
+  margin-bottom: 10px;
+}
+/* line 565, ../sass/base/_flor.scss */
+.node-type-bouquets .prod-description p {
+  color: #7b7a7a;
+}
+/* line 569, ../sass/base/_flor.scss */
+.node-type-bouquets hr {
+  border: none;
+  height: 0.7px;
+  background-color: #e8e8e8;
+  clear: both;
+}
+/* line 575, ../sass/base/_flor.scss */
+.node-type-bouquets .group-product-cat {
+  border-top: 1px solid #fff;
+  margin-top: 10px;
+}
+/* line 581, ../sass/base/_flor.scss */
+.node-type-bouquets .group-product-cat .field-label {
+  text-transform: uppercase;
+  color: grey;
+  width: 25%;
+  float: left;
+}
+/* line 584, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-product-sku {
+  float: left;
+  width: 100%;
+  margin-top: 15px;
+}
+/* line 591, ../sass/base/_flor.scss */
+.node-type-bouquets .prod-cat, .node-type-bouquets .prod-oc {
+  font-style: normal;
+  color: #afafaf;
+  font-size: 14px;
+}
+/* line 597, ../sass/base/_flor.scss */
+.node-type-bouquets .field-name-title-field {
+  display: none;
+}
+/* line 602, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-product-sku-label, .node-type-bouquets .commerce-product-title-label, .node-type-bouquets .commerce-product-status-label {
+  display: inline;
+  font-weight: bold;
+  margin-right: 16%;
+}
+/* line 609, ../sass/base/_flor.scss */
+.node-type-bouquets .product {
+  margin-top: 5px;
+  border-top: 1px solid #fff;
+}
+/* line 614, ../sass/base/_flor.scss */
+.node-type-bouquets .field-type-commerce-product-reference {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 30px;
+}
+/* line 621, ../sass/base/_flor.scss */
+.node-type-bouquets .field-type-taxonomy-term-reference {
+  width: 100%;
+  float: left;
+}
+/* line 626, ../sass/base/_flor.scss */
+.node-type-bouquets .field-name-field-body {
+  float: left;
+  margin-top: 30px;
+}
+/* line 633, ../sass/base/_flor.scss */
+.node-type-bouquets .form-item-quantity {
+  background-color: #fff;
+  margin-left: 3%;
+  width: 110px;
+  margin-right: 5%;
+  height: 35px;
+  position: relative;
+  top: -10px;
+}
+/* line 644, ../sass/base/_flor.scss */
+.node-type-bouquets .product-details input {
+  -webkit-appearance: textfield;
+  background: none;
+  -webkit-appearance: textfield;
+  -webkit-rtl-ordering: logical;
+  user-select: text;
+  cursor: auto;
+  padding: 1px;
+  border-width: none;
+  border-style: none;
+  border-color: none;
+  border-image: none;
+  top: -3px;
+  position: relative;
+}
+/* line 667, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-quantity-plusminus-link.commerce-quantity-plusminus-link-decrease a {
+  -khtml-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 674, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-quantity-plusminus-link a.button {
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 1em;
+  margin-right: 0px;
+  padding: 0px 8px;
+  margin-left: 10%;
+  font-size: 22px;
+  font-family: -webkit-pictograph;
+}
+/* line 686, ../sass/base/_flor.scss */
+.node-type-bouquets .form-item-quantity input {
+  margin-right: 0px !important;
+  width: 25px !important;
+  border-color: white;
+}
+/* line 692, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-quantity-plusminus-link {
+  top: -3px;
+  position: relative;
+  font-size: 25px;
+}
+/* line 698, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-quantity-plusminus-link a.button:hover {
+  text-decoration: none;
+  background: none;
+  color: none;
+}
+/* line 705, ../sass/base/_flor.scss */
+.node-type-bouquets .form-item-attributes-field-top-sizes {
+  background-color: #fff;
+  height: 35px;
+  top: -10px;
+  position: relative;
+}
+/* line 711, ../sass/base/_flor.scss */
+.node-type-bouquets .form-item-attributes-field-top-sizes .form-select {
+  margin-top: 7px;
+}
+/* line 712, ../sass/base/_flor.scss */
+.node-type-bouquets .form-item-attributes-field-top-sizes select {
+  border-color: #fff;
+  background-color: #fff;
+}
+/* line 720, ../sass/base/_flor.scss */
+.node-type-bouquets .page-bouqets .commerce-wishlist {
+  display: none;
+}
+/* line 725, ../sass/base/_flor.scss */
+.node-type-bouquets .product .commerce-add-to-cart .form-submit, .node-type-bouquets .product .commerce-wishlist {
+  display: none;
+}
+/* line 729, ../sass/base/_flor.scss */
+.node-type-bouquets .commerce-add-to-cart .commerce-wishlist {
+  display: none;
+}
+/* line 732, ../sass/base/_flor.scss */
+.node-type-bouquets .action-buttons {
+  margin-top: 10px;
+  border-top: 1px solid #fff;
+}
+/* line 736, ../sass/base/_flor.scss */
+.node-type-bouquets .action-inner {
+  margin-top: 10px;
+}
+/* line 742, ../sass/base/_flor.scss */
+.node-type-bouquets .whishlist {
+  float: left;
+  color: #8f77a9;
+  font-size: 24px;
+  cursor: pointer;
+}
+/* line 749, ../sass/base/_flor.scss */
+.node-type-bouquets .whishlist:hover {
+  color: #da055c;
+}
+/* line 752, ../sass/base/_flor.scss */
+.node-type-bouquets ul.quicktabs-tabs {
+  border-bottom: 1px solid #ddd;
+}
+/* line 760, ../sass/base/_flor.scss */
+.node-type-bouquets #quicktabs-container-product_full_node li.views-fluid-grid-item:hover {
+  background-color: none !important;
+}
+/* line 765, ../sass/base/_flor.scss */
+.node-type-bouquets .quicktabs-tabs li {
+  margin-bottom: -1px;
+}
+/* line 771, ../sass/base/_flor.scss */
+.node-type-bouquets .quicktabs-tabs > .active > a, .node-type-bouquets .quicktabs-tabs > .active > a:hover, .node-type-bouquets .quicktabs-tabs > .active > a:focus {
+  color: #ff475d;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+/* line 780, ../sass/base/_flor.scss */
+.node-type-bouquets .quicktabs-tabs > li > a {
+  padding-top: 8px;
+  padding-bottom: 5px;
+  line-height: 20px;
+  -webkit-border-radius: 0px 0px 0 0;
+  -moz-border-radius: 0px 0px 0 0;
+  border-radius: 0px 0px 0 0;
+  color: #242424;
+  text-align: center;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 6px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+/* line 803, ../sass/base/_flor.scss */
+.addon-product .commerce-add-to-cart .form-submit {
+  width: 90%;
+}
+/* line 807, ../sass/base/_flor.scss */
+.addon-product #edit-submit--3, .addon-product #edit-submit--2, .addon-product #edit-submit--1, .addon-product #edit-submit--4, .addon-product #edit-submit--5, .addon-product #edit-submit--6, .addon-product #edit-submit--7, .addon-product #edit-submit--8,
+.addon-product #edit-submit--9, .addon-product #edit-submit--10, .addon-product #edit-submit--11, .addon-product #edit-submit--12, .addon-product #edit-submit--13, .addon-product #edit-submit--14, .addon-product #edit-submit--15, .addon-product #edit-submit--16, .addon-product #edit-submit--17,
+.addon-product #edit-submit--18, .addon-product #edit-submit--19, .addon-product #edit-submit--20 {
+  background-color: #d9cde0;
+  border: 1px solid white;
+  box-shadow: 0 0 0 2px #d9cde0;
+  color: #8f77a9;
+  display: inline-block;
+  font: normal 12px/18px Helvetica,Arial,Sans Serif;
+  height: 28px;
+  margin-right: 6px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: top;
+  cursor: pointer;
+  width: 110px;
+}
+/* line 828, ../sass/base/_flor.scss */
+.addon-product #edit-submit--3:hover {
+  background-color: #533f5f;
+  box-shadow: 0 0 0 2px #533f5f;
+}
+/* line 832, ../sass/base/_flor.scss */
+.addon-product .form-item-quantity {
+  background-color: #f5f5f5;
+  margin-left: 0%;
+  width: 110px;
+  margin-right: 5%;
+  height: 35px;
+  position: relative;
+  top: -6px;
+}
+/* line 841, ../sass/base/_flor.scss */
+.addon-product ul.views-fluid-grid-items-width-200 li.views-fluid-grid-item {
+  width: 130px;
+}
+
+/* line 850, ../sass/base/_flor.scss */
+.product-images {
+  width: 50%;
+  float: left;
+}
+
+/* line 855, ../sass/base/_flor.scss */
+.product-details {
+  width: 50%;
+  float: left;
+}
+
+/* line 859, ../sass/base/_flor.scss */
+.addon-product {
+  width: 100%;
+  float: left;
+  margin-top: 40px;
+}
+
+/* line 866, ../sass/base/_flor.scss */
+.product-title h3 {
+  text-transform: uppercase;
+  color: #664383;
+}
+
+/* line 871, ../sass/base/_flor.scss */
+.action-buttons .commerce-add-to-cart .form-submit {
+  width: 80%;
+}
+/* line 874, ../sass/base/_flor.scss */
+.action-buttons .add-cart {
+  width: 50%;
+  float: left;
+}
+
+/* line 883, ../sass/base/_flor.scss */
+.blog-block {
+  width: 100%;
+  display: block;
+}
+
+/* line 885, ../sass/base/_flor.scss */
+.front .commerce-wishlist {
+  display: none;
+}
+
+/* line 888, ../sass/base/_flor.scss */
+.front .commerce-wishlist {
+  display: none;
+}
+
+/* line 891, ../sass/base/_flor.scss */
+.page-bouqets .commerce-wishlist {
+  display: none;
+}
+
+/* subscribe ----------------------------------------------------------*/
+/* line 896, ../sass/base/_flor.scss */
+#subscribe {
+  padding: 0 0 34px 0;
+}
+
+/* line 900, ../sass/base/_flor.scss */
+#subscribe img {
+  margin-bottom: 40px;
+}
+
+/* line 903, ../sass/base/_flor.scss */
+#subscribe button {
+  width: 114px;
+  height: 32px;
+  text-transform: uppercase;
+  background-color: #ef94bd;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bolder;
+  border: none;
+  border-radius: 15px;
+  box-shadow: none;
+  outline: none;
+}
+
+/* line 916, ../sass/base/_flor.scss */
+#subscribe button:hover {
+  background-color: #e65596;
+}
+
+/* line 919, ../sass/base/_flor.scss */
+#subscribe button:focus {
+  outline-color: #e65596;
+}
+
+/* line 922, ../sass/base/_flor.scss */
+#subscribe input[type="text"] {
+  width: 380px;
+  max-width: 95%;
+  height: 34px;
+  margin: 10px 0 20px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bolder;
+  background-color: #ffffff;
+  color: #686868;
+  border: none;
+  box-shadow: none;
+}
+
+/* line 935, ../sass/base/_flor.scss */
+#subscribe input[type="text"]:focus {
+  outline-color: #e65596;
+}
+
+/* footer ----------------------------------------------------------*/
+/* line 940, ../sass/base/_flor.scss */
+.list-unstyled {
+  list-style-type: none;
+}
+
+/* line 944, ../sass/base/_flor.scss */
+#footer {
+  height: 470px;
+  background-color: #f2f2f2;
+  color: #686868;
+  padding: 40px 0;
+  box-shadow: inset 0 8px 6px -6px #686868;
+  background: url(../images/optimized/flor-sprites.png) no-repeat 0 center transparent;
+  background-position: 0 -786px;
+  width: 100%;
+}
+
+/* line 954, ../sass/base/_flor.scss */
+#footer .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 958, ../sass/base/_flor.scss */
+#footer h3 {
+  padding-bottom: 24px;
+}
+
+/* line 961, ../sass/base/_flor.scss */
+#footer .list-unstyled li {
+  font-family: "Lato Regular", "Verdana", sans-serif;
+  font-size: 12px;
+  padding-bottom: 20px;
+}
+
+/* line 966, ../sass/base/_flor.scss */
+#footer .list-unstyled li i {
+  padding-right: 8px;
+  font-size: 14px;
+}
+
+/* line 970, ../sass/base/_flor.scss */
+#footer .list-unstyled li a:hover {
+  color: #b16ba6;
+  text-decoration: none;
+}
+
+/* line 974, ../sass/base/_flor.scss */
+#footer .social a {
+  display: inline-block;
+  text-align: center;
+  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+}
+
+/* line 983, ../sass/base/_flor.scss */
+#footer .social a:hover {
+  background-color: #b16ba6;
+  color: #fff;
+}
+
+/* line 987, ../sass/base/_flor.scss */
+#footer .social a i {
+  /*margin-left: 13px;*/
+}
+
+/* line 990, ../sass/base/_flor.scss */
+#footer .payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* line 995, ../sass/base/_flor.scss */
+#footer .payment-methods .payment-method {
+  background-color: #fff;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 5px;
+}
+
+/* line 1001, ../sass/base/_flor.scss */
+#footer .payment-methods .payment-method img {
+  margin-top: 15px;
+  margin-left: 5px;
+  height: 30px;
+  width: 50px;
+}
+
+/* line 1007, ../sass/base/_flor.scss */
+#footer .row.bottom {
+  bottom: 20px;
+}
+
+/* line 1011, ../sass/base/_flor.scss */
+#footer .row.bottom .copyright {
+  padding-left: 20px;
+  float: left;
+  font-family: "Lato Regular", "Verdana", sans-serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* line 1018, ../sass/base/_flor.scss */
+#footer .row.bottom .copyright a {
+  color: #8ab45c;
+}
+
+/* line 1021, ../sass/base/_flor.scss */
+#footer .row.bottom .policy {
+  float: right;
+  padding-right: 20px;
+  text-transform: uppercase;
+  font-family: "Lato Regular", "Verdana", sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* line 1029, ../sass/base/_flor.scss */
+#footer .row.bottom .policy a {
+  padding-left: 20px;
+}
+
+/* line 1033, ../sass/base/_flor.scss */
+.page-user-1 .profile {
+  nargin-top: 200px !important;
+}
+
+/* blog*/
+/* line 1036, ../sass/base/_flor.scss */
+.blog .container-fliud {
+  background-color: #FBF7F7;
+}
+
+/* line 1037, ../sass/base/_flor.scss */
+.blog {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+/* line 1038, ../sass/base/_flor.scss */
+.blog h2 {
+  font-size: 2.4em;
+  margin-bottom: 30px;
+}
+
+/* line 1039, ../sass/base/_flor.scss */
+.blog-post-articles {
+  margin-bottom: 40px;
+}
+
+/* line 1042, ../sass/base/_flor.scss */
+.blog-teaser-cr-date {
+  font-style: italic;
+  color: #C8C8C8;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* line 1043, ../sass/base/_flor.scss */
+.blog-teaser-title {
+  font-size: 1.2em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1em;
+}
+/* line 1044, ../sass/base/_flor.scss */
+.blog-teaser-title a {
+  color: #888585;
+}
+
+/* line 1046, ../sass/base/_flor.scss */
+.blog-teaser-img {
+  opacity: 0.9;
+}
+
+/* line 1047, ../sass/base/_flor.scss */
+.blog-teaser-img:hover {
+  opacity: 1;
+}
+
+/* line 1048, ../sass/base/_flor.scss */
+.blog-teaser-title a:hover {
+  color: #4e4e4e;
+}
+
+/* line 1049, ../sass/base/_flor.scss */
+.blog-teaser-body {
+  color: #bfbdbd;
+  font-size: 14px;
+  text-align: justify;
+}
+
+/* line 1050, ../sass/base/_flor.scss */
+.blog-teaser-body:hover {
+  color: #908f8f;
+}
+
+/* line 1052, ../sass/base/_flor.scss */
+.blog .read-more a {
+  color: #888585;
+  font-size: 13px;
+}
+/* line 1053, ../sass/base/_flor.scss */
+.blog .read-more a:hover {
+  color: #fd0a94;
+}
+/* line 1054, ../sass/base/_flor.scss */
+.blog p {
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+  line-height: 1.2em;
+}
+
+/* line 1057, ../sass/base/_flor.scss */
+.left-blog .blog-teaser-body {
+  margin-right: 60px;
+}
+
+/* line 1061, ../sass/base/_flor.scss */
+.left-blog .col-md-12, .left-blog col-sm-12, .left-blog col-xs-12 {
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+/* line 1066, ../sass/base/_flor.scss */
+.right-blog .col-md-6, .right-blog col-sm-6, .right-blog col-xs-12 {
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+/* line 1069, ../sass/base/_flor.scss */
+.blog-big-title {
+  background: img;
+}
+
+/* line 1073, ../sass/base/_flor.scss */
+.blog .last {
+  clear: both;
+  padding-top: 10px;
+}
+
+/* line 1074, ../sass/base/_flor.scss */
+.right-blog {
+  margin-top: 10px;
+}
+
+/***instagram*/
+/* line 1078, ../sass/base/_flor.scss */
+.our-instagram h2, #subscribe h2 {
+  font-size: 2.4em;
+}
+
+/* line 1079, ../sass/base/_flor.scss */
+.front-content-divider-left {
+  float: left;
+  width: 31%;
+  color: white;
+  border: 1px solid white;
+}
+
+/* line 1085, ../sass/base/_flor.scss */
+.front-content-divider-right {
+  float: right;
+  width: 31%;
+  color: white;
+  border: 1px solid white;
+}
+
+/* line 1091, ../sass/base/_flor.scss */
+.blog h2, .our-instagram h2, .most-popular h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  float: left;
+  width: 33%;
+  letter-spacing: 4px;
+}
+
+/* line 1092, ../sass/base/_flor.scss */
+#subscribe h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+}
+
+/* line 1094, ../sass/base/_flor.scss */
+.page-taxonomy .commerce-wishlist {
+  display: none;
+}
+
+/***menu-botton*/
+/* line 1098, ../sass/base/_flor.scss */
+.menu-bottom {
+  position: relative;
+  /*top:-110px;*/
+  /*z-index:9999;*/
+}
+
+/* line 1104, ../sass/base/_flor.scss */
+.langs {
+  color: #b6b6b6;
+}
+
+/* overlay ----------------------------------------------------------*/
+/* line 1109, ../sass/base/_flor.scss */
+#full-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 1;
+  z-index: 9998;
+  width: 100%;
+  height: 100%;
+}
+
+/* menu -------------------------------------------------------------*/
+/* line 1121, ../sass/base/_flor.scss */
+.mobile-nav-button {
+  position: fixed;
+  margin: 14px;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+}
+
+/* line 1131, ../sass/base/_flor.scss */
+.mobile-nav-button .mobile-nav-button__line {
+  width: 100%;
+  height: 3px;
+  background: #b6b6b6;
+  position: relative;
+  transition: 1s ease;
+}
+
+/* line 1138, ../sass/base/_flor.scss */
+.mobile-nav-button .mobile-nav-button__line:nth-of-type(2) {
+  margin: 0.4rem 0;
+}
+
+/* line 1141, ../sass/base/_flor.scss */
+.mobile-nav-button .mobile-nav-button__line--1 {
+  transform: rotate(45deg);
+  top: 13px;
+  position: absolute;
+}
+
+/* line 1146, ../sass/base/_flor.scss */
+.mobile-nav-button .mobile-nav-button__line--2 {
+  display: none;
+}
+
+/* line 1149, ../sass/base/_flor.scss */
+.mobile-nav-button .mobile-nav-button__line--3 {
+  transform: rotate(135deg);
+  top: 13px;
+  position: absolute;
+}
+
+/* line 1155, ../sass/base/_flor.scss */
+.container.main-menu-wrapper {
+  display: none;
+  opacity: 0;
+  z-index: -1;
+  -moz-transition: opacity 0;
+  -o-transition: opacity 0;
+  -webkit-transition: opacity 0;
+  transition: opacity 0;
+  height: 0;
+  /*max-width: 500px;*/
+}
+
+/* line 1177, ../sass/base/_flor.scss */
+.container.main-menu-wrapper.open {
+  display: block;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 9998;
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/optimized/flor-sprites.png) no-repeat 0 center transparent;
+  background-position: 0 -786px;
+  width: 1920px;
+  height: 1080px;
+  border-top: 1px solid #3D3527;
+  -moz-transition: opacity 800ms;
+  -o-transition: opacity 800ms;
+  -webkit-transition: opacity 800ms;
+  transition: opacity 800ms;
+}
+
+/* line 1197, ../sass/base/_flor.scss */
+.main-menu-wrapper ul {
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
+  padding: 0;
+}
+
+/* line 1204, ../sass/base/_flor.scss */
+.main-menu-wrapper ul li {
+  list-style: none;
+  display: block !important;
+}
+
+/* line 1208, ../sass/base/_flor.scss */
+.main-menu-wrapper ul li a {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #888;
+  font-size: 1.7rem;
+  font-weight: normal;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 1234, ../sass/base/_flor.scss */
+.main-menu-wrapper ul li a:hover {
+  color: #ef94bd;
+}
+
+/* line 1240, ../sass/base/_flor.scss */
+.main-menu-wrapper img {
+  position: absolute;
+  width: 150px;
+  display: block;
+  left: 50%;
+  top: 3rem;
+  transform: translatex(-50%);
+  padding: 0;
+  text-align: center;
+}
+
+@media only screen and (max-device-height: 568px) and (orientation: portrait) {
+  /* line 1252, ../sass/base/_flor.scss */
+  .main-menu-wrapper ul {
+    top: 20%;
+  }
+}
+@media only screen and (max-device-height: 568px) and (orientation: landscape) {
+  /* line 1257, ../sass/base/_flor.scss */
+  .main-menu-wrapper ul {
+    top: 12%;
+  }
+
+  /* line 1260, ../sass/base/_flor.scss */
+  .main-menu-wrapper ul li a {
+    padding: 2px;
+  }
+}
+@media only screen and (max-device-width: 680px) {
+  /* line 1267, ../sass/base/_flor.scss */
+  #footer .row.bottom .copyright {
+    text-align: center;
+    float: none;
+  }
+  /* line 1271, ../sass/base/_flor.scss */
+  #footer .row.bottom .policy {
+    text-align: center;
+    float: none;
+  }
+}
+/* line 1279, ../sass/base/_flor.scss */
+.pattern {
+  background-image: url(../assets/pattern.png);
+  background-repeat: repeat;
+  background-attachment: scroll;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* line 1290, ../sass/base/_flor.scss */
+.branding {
+  position: absolute;
+  z-index: 9999;
+  animation: anim-out-text .3s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* line 1304, ../sass/base/_flor.scss */
+.branding-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 1310, ../sass/base/_flor.scss */
+.branding-center {
+  width: 100%;
+}
+
+/* line 1316, ../sass/base/_flor.scss */
+.branding-right {
+  float: left;
+}
+/* line 1320, ../sass/base/_flor.scss */
+.branding-right .slogan {
+  font-family: 'Meie Script', cursive;
+  color: white;
+}
+/* line 1329, ../sass/base/_flor.scss */
+.branding-right .phone a {
+  color: white;
+  top: -5px;
+  position: relative;
+}
+/* line 1330, ../sass/base/_flor.scss */
+.branding-right .phone a:hover {
+  color: #e835c2;
+}
+
+/* line 1334, ../sass/base/_flor.scss */
+#stickynav {
+  width: 100%;
+  height: 100px;
+}
+
+/* line 1335, ../sass/base/_flor.scss */
+.sticky-element-not-sticky {
+  z-index: 9 !important;
+}
+
+/* line 1336, ../sass/base/_flor.scss */
+.sticky-element-sticky {
+  z-index: 9 !important;
+}
+
+/* line 1338, ../sass/base/_flor.scss */
+#sticky-nav {
+  position: relative;
+  top: -100px;
+  width: 100% !important;
+  -webkit-box-shadow: -1px 7px 5px -4px #b5b5b5;
+  -moz-box-shadow: -1px 7px 5px -4px #b5b5b5;
+  box-shadow: -1px 7px 5px -4px #b5b5b5;
+  background-color: white;
+}
+
+/* line 1349, ../sass/base/_flor.scss */
+.stickynav-active .menu-bottom {
+  top: 0px;
+}
+
+/* line 1351, ../sass/base/_flor.scss */
+.tb-megamenu {
+  float: left;
+  margin-top: -40px;
+}
+
+/* line 1353, ../sass/base/_flor.scss */
+.sticky-element-sticky {
+  height: 50px;
+}
+
+/* line 1355, ../sass/base/_flor.scss */
+.cart-image, .cart-product-quantity, .cart-product-total {
+  float: left;
+  margin-right: 10px;
+  top: 8px;
+  right: 31px;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+/* line 1363, ../sass/base/_flor.scss */
+.logo-small {
+  background: url(../images/optimized/flor-sprites.png) no-repeat 0 center transparent;
+  background-position: 0 -722px;
+  width: 157px;
+  height: 48px;
+  height: 61px;
+  width: 200px;
+  text-indent: -9999px;
+  top: -5px;
+  position: relative;
+  margin-left: 30px;
+}
+
+/* line 1373, ../sass/base/_flor.scss */
+.logo-small a:active {
+  background-color: #e54e4b;
+}
+
+/* line 1375, ../sass/base/_flor.scss */
+.tb-megamenu .nav > .active > a, .tb-megamenu .nav > .active > a:hover, .tb-megamenu .nav > .active > a:focus {
+  background-color: none;
+}
+
+/* line 1380, ../sass/base/_flor.scss */
+#content-area > .jcarousel-list-horizontal > ul {
+  width: 100% !important;
+}
+
+/* line 1387, ../sass/base/_flor.scss */
+.featured-img {
+  opacity: 0.6;
+  margin: 15px;
+}
+
+/* line 1391, ../sass/base/_flor.scss */
+.featured-img:hover {
+  opacity: 0.91;
+  margin: 0px;
+}
+
+/* line 1396, ../sass/base/_flor.scss */
+.jcarousel-skin-default .jcarousel-container-horizontal {
+  height: auto;
+  margin: auto;
+}
+
+/* line 1403, ../sass/base/_flor.scss */
+.featured-content {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background-color: white;
+}
+
+/* line 1409, ../sass/base/_flor.scss */
+.featured-title {
+  position: absolute;
+  top: 40%;
+  z-index: 9999;
+  width: 6%;
+  background-color: white;
+}
+
+/* line 1417, ../sass/base/_flor.scss */
+.jcarousel-skin-default .jcarousel-prev-horizontal {
+  position: absolute;
+  top: 40%;
+  left: 10px;
+}
+
+/* line 1423, ../sass/base/_flor.scss */
+.jcarousel-skin-default .jcarousel-next-horizontal {
+  position: absolute;
+  top: 40%;
+  /*right: -7%;*/
+}
+
+/* line 1429, ../sass/base/_flor.scss */
+.jcarousel-skin-default .jcarousel-item {
+  border: none;
+}
+
+/* line 1432, ../sass/base/_flor.scss */
+.featured-title-back {
+  background-color: white;
+  position: relative;
+}
+/* line 1436, ../sass/base/_flor.scss */
+.featured-title-back a {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 100;
+  color: black;
+}
+/* line 1437, ../sass/base/_flor.scss */
+.featured-title-back a:hover {
+  color: #c69;
+}
+
+/* line 1439, ../sass/base/_flor.scss */
+.featured-border-box {
+  height: 85%;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  margin: 20px;
+}
+
+/* line 1452, ../sass/base/_flor.scss */
+.featured-border-box:hover {
+  opacity: 0;
+}
+
+/* line 1455, ../sass/base/_flor.scss */
+.jcarousel-skin-default .jcarousel-clip-horizontal {
+  width: 100% !important;
+  overflow: hidden;
+}
+
+/* line 1459, ../sass/base/_flor.scss */
+.jcarousel-skin-default .jcarousel-container-horizontal {
+  width: 95%;
+  height: 100%;
+  padding: 20px 40px;
+  margin: auto;
+}
+
+/* line 1466, ../sass/base/_flor.scss */
+.front .views-exposed-form {
+  dispaly: none !important;
+}
+
+/*
+	.node-type-bouquets #page, .page-bouqets #page, .page-taxonomy-term #page { 
+		margin-top:40% !important;
+		}
+		.page-about-us #page { 
+		margin-top:50% !important;
+		}
+
+	*/
+/* line 1478, ../sass/base/_flor.scss */
+.block-facetapi {
+  background-color: white;
+  position: relative;
+  top: -80px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+/* line 1486, ../sass/base/_flor.scss */
+.block--ajax_facets h3 {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  margin-left: 20px;
+}
+
+/* line 1492, ../sass/base/_flor.scss */
+.phone-button {
+  background: url(../images/optimized/menu-stick.png) no-repeat top left;
+  background-position: 0 -93px;
+  width: 26px;
+  height: 34px;
+}
+
+/* line 1493, ../sass/base/_flor.scss */
+.logo-center {
+  wodth: 100%;
+}
+
+/* line 1494, ../sass/base/_flor.scss */
+.mob-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
+/* line 1495, ../sass/base/_flor.scss */
+.phone-button {
+  cursor: pointer;
+}
+
+/* line 1496, ../sass/base/_flor.scss */
+.phone-numb {
+  display: none;
+  background-color: white;
+  width: 20%;
+  height: 20%;
+  border-radius: 5px;
+  text-align: -webkit-center;
+}
+
+/* line 1497, ../sass/base/_flor.scss */
+.phone-popup {
+  float: left;
+  width: 5%;
+  background: url(../assets/phone_button.png) no-repeat 0 center transparent;
+}
+
+/* line 1498, ../sass/base/_flor.scss */
+b-modal __b-popup1__ {
+  margin: 100px;
+}
+
+/* line 1, ../sass/base/_footer.scss */
+footer .region-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* line 1, ../sass/base/_header.scss */
+header .region-header {
+  /*max-width: 1200px;*/
+  margin: 0 auto;
+  /*padding: 2px;*/
+  background-color: #ececec;
+  display: flex;
+}
+
+/* line 10, ../sass/base/_header.scss */
+.block-system-branding-block {
+  float: left;
+  margin-left: 50px;
+}
+
+/* line 15, ../sass/base/_header.scss */
+header {
+  padding: 0.3em 0;
+  background-color: #ececec;
+  text-align: center;
+}
+
+/* line 21, ../sass/base/_header.scss */
+.lang-dropdown-form {
+  padding: 2px;
+}
+
+/* line 22, ../sass/base/_header.scss */
+#block-languagedropdownswitcher, .lang-dropdown-form {
+  width: 10%;
+  display: flex;
+  margin-left: 1em;
+}
+
+/* line 23, ../sass/base/_header.scss */
+#block-bones-branding {
+  margin-left: 4%;
+}
+
+/* line 24, ../sass/base/_header.scss */
+.dd-select {
+  border: none !important;
+  background-color: none;
+}
+
+/* line 26, ../sass/base/_header.scss */
+.ddsDefault .dd-pointer-down {
+  display: none;
+}
+
+/* line 27, ../sass/base/_header.scss */
+.ddsDefault .dd-select {
+  background: none !important;
+}
+
+/* line 28, ../sass/base/_header.scss */
+.ddsDefault .dd-selected label {
+  text-transform: uppercase;
+  color: #fc3588;
+  font-family: arial;
+  font-size: 16px;
+  font-weight: initial;
+  cursor: pointer;
+}
+
+/* line 1, ../sass/base/_media.scss */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 6, ../sass/base/_media.scss */
+svg {
+  max-height: 100%;
+  height: auto;
+}
+
+/* line 1, ../sass/base/_page.scss */
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+/*
+main .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+*/
+/* line 12, ../sass/base/_page.scss */
+.dropdown-container {
+  display: none;
+}
+
+/* line 14, ../sass/base/_page.scss */
+main {
+  min-height: 600px;
+}
+
+/* line 18, ../sass/base/_page.scss */
+.video {
+  width: 100%;
+  z-index: 0;
+  opacity: 1;
+}
+
+/* line 24, ../sass/base/_page.scss */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 30, ../sass/base/_page.scss */
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 40, ../sass/base/_page.scss */
+.video-container:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 45%;
+  left: 45%;
+  width: 46px;
+  height: 36px;
+  z-index: 30;
+  cursor: pointer;
+}
+
+/* line 51, ../sass/base/_page.scss */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* image poster clicked, player class added using js */
+/* line 54, ../sass/base/_page.scss */
+.video.player img {
+  display: none;
+}
+
+/* line 55, ../sass/base/_page.scss */
+.video.player:after {
+  display: none;
+}
+
+/* line 2, ../sass/base/_typography.scss */
+html {
+  font-family: 'Helvetica', 'Open Sans', 'Arial', sans-serif;
+}
+
+/* line 6, ../sass/base/_typography.scss */
+a {
+  text-decoration: none;
+}
+/* line 8, ../sass/base/_typography.scss */
+a:hover {
+  color: red;
+}
+
+/* line 13, ../sass/base/_typography.scss */
+h1 {
+  font-size: 40px;
+  font-weight: 400;
+}
+/* line 16, ../sass/base/_typography.scss */
+h1 a:hover {
+  border-bottom: 2px solid;
+}
+
+/* line 21, ../sass/base/_typography.scss */
+h2 {
+  font-size: 34px;
+  font-weight: 400;
+}
+/* line 24, ../sass/base/_typography.scss */
+h2 a:hover {
+  border-bottom: 2px solid;
+}
+
+/* line 29, ../sass/base/_typography.scss */
+h3 {
+  font-size: 26px;
+  font-weight: 400;
+}
+/* line 32, ../sass/base/_typography.scss */
+h3 a:hover {
+  border-bottom: 2px solid;
+}
+
+/* line 37, ../sass/base/_typography.scss */
+h4 {
+  font-size: 22px;
+  font-weight: 700;
+}
+/* line 40, ../sass/base/_typography.scss */
+h4 a:hover {
+  border-bottom: 1px solid;
+}
+
+/* line 48, ../sass/base/_typography.scss */
+p a,
+span a,
+ul li a {
+  border-bottom: 1px solid;
+}
+
+/* line 1, ../sass/components/_lists.scss */
+ul {
+  margin-left: 0px;
+  padding-left: 24px;
+}
+/* line 4, ../sass/components/_lists.scss */
+ul li {
+  line-height: 1.5em;
+}
+
+/* line 9, ../sass/components/_lists.scss */
+ul.menu {
+  margin-left: 0px;
+}
+
+/* line 2, ../sass/components/_navigation.scss */
+.menu-item {
+  display: inline;
+}
+
+/* line 4, ../sass/components/_navigation.scss */
+#block-bones-main-menu {
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 0.9em;
+  margin-left: 2em;
+}
+
+/* line 5, ../sass/components/_navigation.scss */
+#block-bones-main-menu ul li a {
+  border-bottom: none;
+  color: #716c6c;
+  font-size: 14px;
+}
+
+/* line 6, ../sass/components/_navigation.scss */
+#block-bones-main-menu ul li a:hover {
+  color: #e54e4b;
+}
+
+/* line 7, ../sass/components/_navigation.scss */
+#block-bones-main-menu ul li a:active {
+  color: #f644c8;
+}
+
+/* line 8, ../sass/components/_navigation.scss */
+#block-bones-main-menu ul li {
+  margin-left: 1em;
+}
+
+/* No files to import found in layouts/**\/* */

@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Module file for vefl.
+ */
+
+use Drupal\layout_plugin\Layout;
+
+/**
+ * Implements hook_theme().
+ */
+function vefl_theme() {
+  $hooks = [];
+  $hooks['vefl_views_exposed_form'] = [
+    'render element' => 'form',
+    'theme path' => drupal_get_path('module', 'vefl'),
+  ];
+  return $hooks;
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function vefl_theme_registry_alter(&$theme_registry) {
+  // Inserts default views preprocess function before vefl preprocess function.
+  $before = array_search('template_preprocess_vefl_views_exposed_form', $theme_registry['vefl_views_exposed_form']['preprocess functions']);
+  array_splice($theme_registry['vefl_views_exposed_form']['preprocess functions'], $before, 0, ['template_preprocess_views_exposed_form']);
+}
+
+/**
+ * A theme preprocess function for views_exposed_form.
+ *
+ * Adds $region_widgets array with separated by regions widgets.
+ */
+function template_preprocess_vefl_views_exposed_form(&$variables) {
+  $form = $variables['form'];
+  $configuration = $form['#vefl_configuration'];
+
+  $regions = [];
+  foreach ($configuration['regions'] as $region_name => $field_names) {
+    $regions[$region_name] = [];
+
+    foreach ($field_names as $field_name) {
+
+      if (!empty($form['actions'][$field_name])) {
+        $regions[$region_name][$field_name] = $form['actions'][$field_name];
+        $regions[$region_name][$field_name]['#weight'] = $form['actions']['#weight'];
+      }
+      elseif (!empty($form[$field_name])) {
+        $regions[$region_name][$field_name] = $form[$field_name];
+      }
+    }
+  }
+
+  $layout = Layout::layoutPluginManager()->createInstance($configuration['layout']['id'], $configuration['layout']['settings']);
+  $built = $layout->build($regions);
+
+  $variables['form'] = $built;
+}

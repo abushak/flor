@@ -1,0 +1,11 @@
+services:
+  simplify_menu.menu_items:
+    class: Drupal\simplify_menu\MenuItems
+    arguments: ['@menu.link_tree']
+
+  simplify_menu.menu_items_twig_extension:
+    class: Drupal\simplify_menu\TwigExtension\MenuItemsTwigExtension
+    arguments: ['@simplify_menu.menu_items']
+    tags:
+      - { name: twig.extension }
+

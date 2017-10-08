@@ -1,0 +1,17 @@
+{
+  "name": "drupal/core_views_facets",
+  "description": "The Core Views Facets module allows site builders to easily create and manage faceted views interfaces.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/core_views_facets",
+  "authors": [
+    {
+      "name": "See all contributors",
+      "homepage": "https://www.drupal.org/node/2666804/committers"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/facets",
+    "source": "git://git.drupal.org/project/core_views_facets.git"
+  },
+  "license": "GPL-2.0+"
+}

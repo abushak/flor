@@ -1,0 +1,8 @@
+commerce_currency_switcher.currency_switch_settings:
+  path: '/admin/commerce/config/currency/currency-switch'
+  defaults:
+    _form:  '\Drupal\commerce_currency_switcher\Form\CurrencySwitchSettingsForm'
+    _title: 'Currency switch settings'
+  requirements:
+    _permission: 'administer commerce_currency_switcher'
+    _permission: 'administer commerce_currency'

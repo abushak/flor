@@ -1,0 +1,12 @@
+name: Views fieldsets
+type: module
+description: Adds fieldsets to Views
+package: Views
+# version: 1.0-dev
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2017-02-23
+version: '8.x-3.0'
+core: '8.x'
+project: 'views_fieldsets'
+datestamp: 1487879588

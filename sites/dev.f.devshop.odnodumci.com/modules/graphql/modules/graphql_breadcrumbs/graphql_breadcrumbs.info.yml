@@ -1,0 +1,13 @@
+name: GraphQL Breadcrumbs
+type: module
+description: Expose a route\'s breadcrumbs to GraphQL
+package: GraphQL
+# core: 8.x
+dependencies:
+  - graphql_core
+
+# Information added by Drupal.org packaging script on 2017-07-04
+version: '8.x-3.x-dev'
+core: '8.x'
+project: 'graphql'
+datestamp: 1499178245

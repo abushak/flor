@@ -1,0 +1,13 @@
+name : 'Views Details Style Plugin'
+type: module
+description : 'Shows views rows as details'
+package : Views
+# core : 8.x
+dependencies :
+  - views
+
+# Information added by Drupal.org packaging script on 2015-01-23
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'views_details'
+datestamp: 1422017280

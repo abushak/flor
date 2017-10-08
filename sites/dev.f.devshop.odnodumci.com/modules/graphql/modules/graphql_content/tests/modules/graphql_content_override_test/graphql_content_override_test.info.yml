@@ -1,0 +1,12 @@
+name: 'GraphQL content override test module'
+type: module
+description: 'Provides configuration for testing'
+package: Testing
+# version: VERSION
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2017-07-04
+version: '8.x-3.x-dev'
+core: '8.x'
+project: 'graphql'
+datestamp: 1499178245

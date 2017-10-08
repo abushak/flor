@@ -1,0 +1,21 @@
+name: Bones
+description: Bones Drupal 8 Theme
+type: theme
+base theme: classy
+core: 8.x
+version: 1.0
+
+libraries:
+  - bones/global-css
+  - bones/global-js
+
+# Regions
+regions:
+  header: 'Header'
+  video: 'Video'
+  content_top: 'Content Top'
+  content: 'Content'
+  content_bottom: 'Content Bottom'
+  right_sidebar: 'Right Sidebar'
+  left_sidebar: 'Left Sidebar'
+  footer: 'Footer'

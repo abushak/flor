@@ -1,0 +1,16 @@
+.views-ui-display-tab-bucket.field .views-fieldsets-fieldset,
+.draggable.views-fieldsets-fieldset {
+	font-weight: bold;
+}
+.views-ui-display-tab-bucket.field .views-fieldsets-level-1 {
+	padding-left: calc(6px + 1em);
+}
+.views-ui-display-tab-bucket.field .views-fieldsets-level-2 {
+	padding-left: calc(6px + 2em);
+}
+.views-ui-display-tab-bucket.field .views-fieldsets-level-3 {
+	padding-left: calc(6px + 3em);
+}
+.views-ui-display-tab-bucket.field .views-fieldsets-level-4 {
+	padding-left: calc(6px + 4em);
+}

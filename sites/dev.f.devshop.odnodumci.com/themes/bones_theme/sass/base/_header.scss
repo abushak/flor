@@ -1,0 +1,28 @@
+header .region-header {
+   /*max-width: 1200px;*/
+    margin: 0 auto;
+    /*padding: 2px;*/
+	background-color: #ececec;
+	display:flex;
+}
+
+
+.block-system-branding-block {
+    float:left;
+	margin-left:50px;
+}
+
+header {
+  padding: 0.3em 0;
+  background-color: #ececec;
+  text-align: center;
+  
+}
+.lang-dropdown-form {padding: 2px;}
+#block-languagedropdownswitcher, .lang-dropdown-form {width:10%;display:flex;margin-left:1em;}
+#block-bones-branding {margin-left: 4%;}
+.dd-select {border:none !important;background-color:none;}
+
+.ddsDefault .dd-pointer-down {display:none;}
+.ddsDefault .dd-select {background:none !important;}
+.ddsDefault .dd-selected label {text-transform:uppercase;color: #fc3588;font-family:arial;font-size:16px;font-weight: initial;cursor: pointer;}

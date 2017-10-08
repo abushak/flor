@@ -1,0 +1,10 @@
+vefl_onecol:
+  label: Single column
+  category: 'VEFL'
+  path: layouts/onecol
+  icon: onecol.png
+  css: onecol.css
+  template: vefl-onecol
+  regions:
+    middle:
+      label: Middle column

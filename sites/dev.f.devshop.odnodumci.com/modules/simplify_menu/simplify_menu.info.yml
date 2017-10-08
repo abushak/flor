@@ -1,0 +1,11 @@
+name: US Courts Navigation
+description: Contains US Courts's menu navigation.
+package: US Courts
+type: module
+# core: '8.x'
+package: US Courts
+# Information added by Drupal.org packaging script on 2017-06-16
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'simplify_menu'
+datestamp: 1497575044

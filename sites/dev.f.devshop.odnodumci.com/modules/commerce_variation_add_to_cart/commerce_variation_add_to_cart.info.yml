@@ -1,0 +1,13 @@
+name: Commerce Variation Add to Cart
+type: module
+description: 'Provides separate Add to cart button for each product variation.'
+package: Commerce
+# core: 8.x
+dependencies:
+  - drupal:commerce
+
+# Information added by Drupal.org packaging script on 2017-06-03
+version: '8.x-1.02'
+core: '8.x'
+project: 'commerce_variation_add_to_cart'
+datestamp: 1496508544

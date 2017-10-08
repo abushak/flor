@@ -1,0 +1,6 @@
+/* line 1, ../sass/base/_header.scss */
+header .region-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}

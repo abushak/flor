@@ -1,0 +1,5 @@
+responsive_menus.admin:
+  title: Responsive Menus
+  description: 'Settings for Responsive Menus module'
+  route_name: responsive_menus.admin
+  parent: system.admin_config_ui

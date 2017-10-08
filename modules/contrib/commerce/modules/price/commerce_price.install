@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for Price.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function commerce_price_requirements($phase) {
+  $requirements = [];
+  if ($phase == 'install') {
+    if (!class_exists('\CommerceGuys\Intl\Currency\CurrencyRepository')) {
+      $requirements['commerce_price_library'] = [
+        'description' => t("Commerce Price requires the commerceguys/intl library."),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+
+  return $requirements;
+}

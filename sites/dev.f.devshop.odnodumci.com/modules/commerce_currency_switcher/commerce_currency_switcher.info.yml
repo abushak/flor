@@ -1,0 +1,13 @@
+name: Commerce Currency switcher
+type: module
+description: 'Provides switching for commerce currency.'
+package: Commerce
+# core: 8.x
+dependencies:
+  - commerce
+# project: 'commerce_currency_switcher'
+# Information added by Drupal.org packaging script on 2017-06-29
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'commerce_currency_switcher'
+datestamp: 1498714145

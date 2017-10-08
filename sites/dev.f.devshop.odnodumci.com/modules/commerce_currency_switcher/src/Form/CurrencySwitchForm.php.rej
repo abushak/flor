@@ -1,0 +1,61 @@
+--- src/Form/CurrencySwitchForm.php
++++ src/Form/CurrencySwitchForm.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\commerce_currency_switcher\Form;
+ 
++use Drupal\commerce_cart\CartProviderInterface;
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Form\FormBase;
+ use Drupal\Core\Form\FormStateInterface;
+@@ -27,15 +28,22 @@
+    */
+   protected $currentRequest;
+ 
+-  public function __construct(EntityTypeManagerInterface $entity_type_manager, RequestStack $requestStack) {
++  /**
++   * @var \Drupal\commerce_cart\CartProviderInterface
++   */
++  protected $cartProvider;
++
++  public function __construct(EntityTypeManagerInterface $entity_type_manager, RequestStack $requestStack, CartProviderInterface $cartProvider) {
+     $this->storage = $entity_type_manager->getStorage('commerce_currency');
+     $this->currentRequest = $requestStack->getCurrentRequest();
++    $this->cartProvider = $cartProvider;
+   }
+ 
+   public static function create(ContainerInterface $container) {
+     return new static(
+       $container->get('entity_type.manager'),
+-      $container->get('request_stack')
++      $container->get('request_stack'),
++      $container->get('commerce_cart.cart_provider')
+     );
+   }
+ 
+@@ -84,8 +92,8 @@
+       '#default_value' => $selected_currency,
+       '#attributes' => [
+         'class' => ['currency-select'],
+-        'onChange' => ['this.form.submit()']
+-      ]
++        'onChange' => ['this.form.submit()'],
++      ],
+     ];
+ 
+     $form['submit'] = [
+@@ -111,6 +119,14 @@
+ 
+     $session = $this->currentRequest->getSession();
+     $session->set('selected_currency', $selected_currency);
++
++    // Save the carts on change of the currency to trigger OrderRefresh.
++    $carts = $this->cartProvider->getCarts();
++    foreach ($carts as $cart) {
++      /* @var \Drupal\commerce_order\Entity\Order $cart */
++      $cart->save();
++    }
+   }
+ 
+ }
++

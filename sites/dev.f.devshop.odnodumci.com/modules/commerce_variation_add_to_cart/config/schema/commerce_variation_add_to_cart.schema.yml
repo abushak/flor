@@ -1,0 +1,22 @@
+field.formatter.settings.variation_add_to_cart:
+  type: mapping
+  label: 'Commerce Variation Add to Cart Formatter settings'
+  mapping:
+    show_quantity:
+      type: boolean
+      label: 'Show quantity'
+    show_price:
+      type: boolean
+      label: 'Show price'
+    show_currency:
+      type: boolean
+      label: 'Show currency'
+    price_format:
+      type: integer
+      label: 'Price format'
+    attributes:
+      type: sequence
+      label: 'Attributes'
+      sequence:
+        type: string
+        label: 'Attribute ID'

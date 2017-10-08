@@ -1,0 +1,12 @@
+{
+  "name": "drupal/commerce_variation_cart_form",
+  "description": "Provides a simple add-to-cart form in the product variation type manage display.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/commerce_variation_cart_form",
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/commerce": "~2.0"
+  },
+  "minimum-stability": "dev",
+  }]
+}

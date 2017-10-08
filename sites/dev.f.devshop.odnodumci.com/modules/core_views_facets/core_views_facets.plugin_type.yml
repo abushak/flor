@@ -1,0 +1,9 @@
+core_views_facets_exposed_filter_types:
+  label: Facets views exposed filter
+  plugin_manager_service_id: plugin.manager.core_views_facets.exposed_filter_types
+  plugin_definition_decorator_class: \Drupal\plugin\PluginDefinition\ArrayPluginDefinitionDecorator
+
+core_views_facets_contextual_filter_types:
+  label: Facets views contextual filter
+  plugin_manager_service_id: plugin.manager.core_views_facets.contextual_filter_types
+  plugin_definition_decorator_class: \Drupal\plugin\PluginDefinition\ArrayPluginDefinitionDecorator

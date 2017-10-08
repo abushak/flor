@@ -1,0 +1,28 @@
+<div class="commerce-variation-add-to-cart" id="commerce-variation-add-to-cart-{{ variation_id }}">
+  <div class="attributes">
+    {% for attr in attributes %}
+      <div class="attribute-{{ attr }}">
+        {{attr}}
+      </div>
+    {% endfor %}
+  </div>
+  {% if show_price %}
+    <div class="price">
+      {{ price_number|number_format(price_format, '.', ',') }}
+    </div>
+  {% endif %}
+  {% if show_currency %}
+    <div class="currency">
+      {{ price_currency }}
+    </div>
+  {% endif %}
+  <form method="post" action="{{ url('commerce_variation_add_to_cart.variation_cart') }}" accept-charset="UTF-8" class="commerce-variation-add-to-cart-form" id="commerce-variation-add-to-cart-form-{{ variation_id }}">
+    <input type="{{ show_quantity }}" name="quantity" min="1" max="100" step="1" value="1" class="quantity form-text" />
+    <input type="hidden" name="product_id" value="{{ product_id }}" />
+    <input type="hidden" name="variation_id" value="{{ variation_id }}" />
+    <input type="hidden" name="destination" value="{{ destination }}" />
+    {% if user.hasPermission('access variation add to cart') %}
+      <input type="submit" value="{% trans %}Add to cart{% endtrans %}" class="button button--primary form-submit" />
+    {% endif %}
+  </form>
+</div>

@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Views details style plugin code.
+ */
+
+use Drupal\Core\Render\Element\RenderElement;
+use Drupal\Core\Form\FormState;
+
+/**
+ * Implements hook_preprocess_HOOK() for theme_views_view_details().
+ */
+function template_preprocess_views_view_details(&$variables) {
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+  $style = $view->style_plugin;
+  $options = $style->options;
+
+  $default_row_class = isset($options['default_row_class']) ? $options['default_row_class'] : FALSE;
+  foreach ($rows as $id => $row) {
+    $classes = array();
+    if ($default_row_class) {
+      $classes[] = 'views-row';
+    }
+
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $classes[] = $row_class;
+    }
+
+    $field = $options['title'];
+    $title = '';
+    if (isset($view->field[$field])) {
+      $title = $style->getField($id, $field);
+      if ($view->field[$field]->options['label']) {
+        $title = $view->field[$field]->options['label'] . ': ' . $title;
+      }
+      $title = strip_tags(htmlspecialchars_decode($title));
+    }
+    $field = $options['description'];
+    $description = '';
+    if (isset($view->field[$field])) {
+      $description = $style->getField($id, $field);
+      if ($view->field[$field]->options['label']) {
+        $description = $view->field[$field]->options['label'] . ': ' . $description;
+      }
+      $description = strip_tags(htmlspecialchars_decode($description));
+    }
+
+    $element = array(
+      '#title' => $title,
+      '#type' => 'details',
+      '#open' => !$options['collapsed'],
+      '#children' => $row,
+      '#parents' => array(),
+      '#description' => $description,
+      '#attributes' => array(
+        'class' => $classes,
+      ),
+    );
+    // Leave first details open if all the details are collapsed and open
+    // first is TRUE.
+    if ($id == 0 && $options['collapsed'] && $options['open_first']) {
+      $element['#open'] = TRUE;
+    }
+    $form = array();
+    $form_state = new FormState();
+    $element = RenderElement::processGroup($element, $form_state, $form);
+
+    $variables['details'][] = $element;
+  }
+
+}

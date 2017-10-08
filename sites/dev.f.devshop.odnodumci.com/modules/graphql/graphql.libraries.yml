@@ -1,0 +1,12 @@
+explorer:
+  version: VERSION
+  js:
+    js/dist/bundle.min.js: {}
+  css:
+    component:
+      css/graphiql.css: {}
+      css/explorer.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once

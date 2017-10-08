@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * Prepares variables for breadcrumb templates.
+ *
+ * Default template: breadcrumb.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - links: A list of \Drupal\Core\Link objects which should be rendered.
+ */
+function bones_preprocess_breadcrumb(&$variables) {
+  $variables['breadcrumb'] = array();
+  /** @var \Drupal\Core\Link $link */
+  $count = 0;
+  foreach ($variables['links'] as $key => $link) {
+    $variables['breadcrumb'][$key] = array('text' => $link->getText(), 'url' => $link->getUrl()->toString());
+    if($count==1){
+    $class_string = str_replace(" ", "_", $link->getText() );
+    $variables['attributes']['class'][] = $class_string;
+    //get the second breadcrumb item(the second level of menu) and pass it to the template so we can stick in as a body class using js.
+    //dpm($class_string);
+    $variables['menu_class'] = strtolower($class_string);
+    }
+    $count++;
+  }
+
+}
+
+/**
+ * Add jquery!!!!!
+ */
+function staa_page_alter(&$page) {
+  $page['#attached']['library'][] = 'core/jquery';
+}
+/**
+function bones_preprocess_page(&$variables) {
+  $block = \Drupal\block\Entity\Block::load('taxonomymenu');
+  $block_content = \Drupal::entityTypeManager()
+    ->getViewBuilder('block')
+    ->view($block);
+  $variables['taxonomymenu'] = $block_content;
+}
+*/
+
+  // Load Instance of custom block with variables
+    $example_block = \Drupal::entityManager()->getStorage('block')->load('taxonomymenu');
+    if (!empty($taxonomymenu)){
+      $taxonomymenu = \Drupal::entityManager()
+        ->getViewBuilder('block')
+        ->view($taxonomymenu);
+      if ($taxonomymenu) {
+        // Add block content to build array
+        $variables['content']['taxonomymenu'] = $taxonomymenu;
+      }
+    }
+
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function bones_preprocess_html(&$variables) {
+  // Get currently active user and his roles.
+  $account = \Drupal::currentUser();
+  $roles = $account->getRoles();
+  // The getRoles() method will return us the machine names, so there is no need
+  // to process roles names additionally. However, I suggest prefixing the names
+  // with "role-", so it's more obvious.
+  foreach ($roles as $role) {
+    $variables['attributes']['class'][] = 'role-' . $role;
+  }
+}
+
+
+
+
+
+?>

@@ -1,0 +1,84 @@
+An Introduction to the BEM Methodology
+
+Let’s face it, we all want to make our code easier to read. Doing so helps us work more quickly and efficiently, and when others work with us we can maintain clarity and coherent semantics. These days there seem to be so many standards and terms in the CSS world: OOCSS, SMACSS, BEM and more! These are all approaches for improving CSS structure, and today we are going to cover BEM.
+
+BEM stands for Block Element Modifier. It suggests a structured way of naming your classes, based on properties of the element in question. If you’ve ever seen a class name like header__form—email that’s BEM in action. When using the BEM methodology, keep note that we will be using only class names (not IDs). Class names allow you to repeat the BEM name if necessary, and create a more consistent coding structure (both on in the HTML and CSS/Sass files). Now let’s break it down.
+
+Block
+
+The block is the container or context where the element finds itself. Think of this as the bigger structural chunks of your code. You might have a header, footer, sidebar and main content area; each of which would be considered a block.
+
+The block element forms the root of the class and will always go first. Just know that once you’ve defined your block, you will be ready to start naming your elements.
+
+Element
+
+The element is the piece of a block. The block is the whole and the elements are the pieces. Each element is written after the block connected by two underscores.
+
+.block__element
+I know this looks a little strange but once you start using it you’ll wonder how you ever wrote CSS without it! The double underscore allows you to quickly and visually navigate and manipulate your code.
+
+Here are some examples of how the element methodology works:
+
+.header__logo {}
+.header__tagline {}
+.header__searchbar {}
+.header__navigation {}
+
+As you can see, there is room for creativity and making this methodology your own. “Navigation” could be changed to “nav”, “tagline” could be changed to “tag” or “tagLine”. The point is to keep the names simple, clear, and precise. Don’t over think it, and because your stylesheets and html will stay DRY (don’t repeat yourself). It shouldn’t be a problem to update the class names when you find a better semantic that works for you (just try to stick with it!). Elements will make the core of your class names, helping you in understanding how to structure your stylesheets and how to manage your layout.
+
+Modifiers
+
+Now it gets fun (if you weren’t having fun already!) When you name a class, the intention is to help make that element repeatable so you don’t have to write new classes in other areas of the site if the elements styles are the same. When you need to modify the style of a specific element, you can use a modifier (of course!) To do this, you add a double hyphen -- after the element (or block). Here is a short example
+
+.block--modifier {}
+.block__element--modifier {}
+Be careful with these! Remember you want to keep everything simple and not have to repeat yourself or create extra classes unless absolutely necessary. Let’s talk about it with code using the header of the site as our block:
+
+
+.header__navigation {}
+.header__navigation--secondary {}
+If you are using a secondary navigation, the chances are that the layout and spacing is the same, but the secondary navigation is a different color. You can either duplicate the original styles, or even better, use a preprocessor.  With Sass, you'd @extend the main element (so that the secondary element inherits all the properties) and change the appropriate styles.
+
+
+.header__navigation {
+    background: #008cba;
+    padding: 1rem 0;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    }
+
+.header__navigation--secondary {
+    @extend .header__navigation;
+    background: #dfe0e0;
+    }
+You might be thinking to yourself “but the class name is so long!” The way I see it: BEM class names are specific, clear, easy to read inside html, and clearly communicate what they're for.
+
+What I also like about BEM class names is that you only have to use one class name for each html tag. Take a look at how it might work for labels. Standard selectors:
+
+.label .label-default {}
+.label .label-alert {}
+vs. BEM selectors:
+
+
+.label {}
+.label--alert {}
+Languages like Sass (Scss specifically) allow us to quickly have elements share the same stylings with small exceptions. The example below prevents us duplicating styles, rather we just change what is needed. What I like so much about the BEM methodology is that I don’t have to combine ambiguous classes like “panel panel-default col-md-3”. If you use a framework like Foundation you can begin to leverage mixins. But for a simple example, let’s style those lables we just defined.
+
+
+.label {
+    background: #eee;
+    border-radius: 505;
+    color: #333;
+    font-size: 1rem;
+    }
+
+.label--alert {
+    @extend .label;
+    background: #da4531;
+    color: #fff;
+    }
+Conclusion
+
+Well there you have it, BEM in a nutshell. As you can see, there is so much more to explore. BEM is an ever-evolving system that allows you to bring clarity to your code and help you better define and set hierarchy to your front-end development.
+
+From my personal experience, it has helped me tremendously in building prototypes more efficiently, and transition to production level code even quicker!

@@ -1,0 +1,18 @@
+# Schema for the views style plugins.
+
+views.style.details:
+  type: views_style
+  label: 'Details Style'
+  mapping:
+    collapsed:
+      type:  boolean
+      label: 'Collapsed by default'
+    open_first:
+      type:  boolean
+      label: 'Leave first fieldset open'
+    title:
+      type:  string
+      label: 'Details Title'
+    description:
+      type: string
+      label: 'Details Description'

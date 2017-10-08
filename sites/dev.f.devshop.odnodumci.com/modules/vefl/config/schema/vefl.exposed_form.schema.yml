@@ -1,0 +1,5 @@
+# Schema for the views exposed form.
+
+views.exposed_form.vefl_basic:
+  type: views_exposed_form
+  label: 'Basic (with layout)'

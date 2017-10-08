@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Module install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function views_ef_fieldset_install() {
+  \Drupal::configFactory()->getEditable('views.settings')->set('display_extenders', array('views_ef_fieldset'))->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function views_ef_fieldset_uninstall() {
+  $config = \Drupal::config('views.settings')->get('display_extenders');
+  if(($key = array_search('views_ef_fieldset', $config)) !== false) {
+    unset($config[$key]);
+  }
+  \Drupal::configFactory()->getEditable('views.settings')->set('display_extenders', $config)->save();
+}

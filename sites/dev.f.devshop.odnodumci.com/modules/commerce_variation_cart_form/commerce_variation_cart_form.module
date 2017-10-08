@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the Commerce Variation Cart Form module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function commerce_variation_cart_form_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.commerce_variation_cart_form':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = array('settings' => $settings);
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_entity_type_build().
+ *
+ * @inheritdoc
+ */
+function commerce_variation_cart_form_entity_type_build(array &$entity_types) {
+  // Allow our form mode to be passed as the operation parameter in calls to
+  // EntityFormBuilder::getForm().
+  $entity_types['commerce_order_item']->setFormClass('variation_cart_form', 'Drupal\commerce_cart\Form\AddToCartForm');
+}
+
+/**
+ * Implements hook_entity_extra_field_info().
+ *
+ * @inheritdoc
+ */
+function commerce_variation_cart_form_entity_extra_field_info() {
+  $extra = array();
+  // Add a cart form pseudo-field for each product variation type.
+  $bundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo('commerce_product_variation');
+  foreach ($bundles as $id => $bundle) {
+    $extra['commerce_product_variation'][$id]['display']['commerce_variation_cart_form'] = array(
+      'label' => t('Add to cart form'),
+      'description' => t('Add to cart button and install quantity field.'),
+      'weight' => 10,
+    );
+  }
+  return $extra;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ *
+ * @inheritdoc
+ */
+function commerce_variation_cart_form_commerce_product_variation_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // Check if the extra field should be displayed.
+  if ($display->getComponent('commerce_variation_cart_form')) {
+    $order_item_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_order_item');
+    $order_item = $order_item_storage->createFromPurchasableEntity($entity);
+    $form_state_additions = [
+      'product' => $entity->getProduct(),
+      'view_mode' => $view_mode,
+      'settings' => [
+        'combine' => $display->getThirdPartySetting('commerce_variation_cart_form', 'combine'),
+      ],
+    ];
+
+    $build['commerce_variation_cart_form'] = \Drupal::service('entity.form_builder')->getForm($order_item, 'variation_cart_form', $form_state_additions);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @inheritdoc
+ */
+function commerce_variation_cart_form_form_entity_view_display_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Check our extra field is applicable to the entity type and bundle
+  // and is present in the form.
+  $extra = commerce_variation_cart_form_entity_extra_field_info();
+  $entity_type = $form['#entity_type'];
+  $bundle = $form['#bundle'];
+  if (!isset($extra[$entity_type], $extra[$entity_type][$bundle], $form['fields']['commerce_variation_cart_form'])) {
+    return;
+  }
+
+  // \Drupal\Core\Entity\Entity\EntityViewDisplay.
+  $display = $form_state->getFormObject()->getEntity();
+
+  // Provide settings as a summary if the component is present.
+  if ($display->getComponent('commerce_variation_cart_form')) {
+    $form['fields']['commerce_variation_cart_form']['settings_summary'] = array(
+      'combine' => array(
+        '#type' => 'checkbox',
+        '#title' => t('Combine order items containing the same product variation.'),
+        '#default_value' => $display->getThirdPartySetting('commerce_variation_cart_form', 'combine'),
+      ),
+    );
+  }
+
+  // Add an entity builder to save the setting in the EntityViewDisplay entity.
+  $form['#entity_builders'][] = 'commerce_variation_cart_form_form_entity_view_display_edit_form_builder';
+}
+
+/**
+ * Entity builder for the Product Variation entity "manage display" form.
+ *
+ * @inheritdoc
+ */
+function commerce_variation_cart_form_form_entity_view_display_edit_form_builder($entity_type, EntityViewDisplay $display, &$form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
+  if (isset($values['fields']['commerce_variation_cart_form']['settings_summary']['combine'])) {
+    // Save the setting as stored configuration on the EntityViewDisplay entity.
+    $combine = $values['fields']['commerce_variation_cart_form']['settings_summary']['combine'];
+    $display->setThirdPartySetting('commerce_variation_cart_form', 'combine', $combine);
+  }
+}

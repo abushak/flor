@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * @file
+ * Contains core_views_facets.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\facets\Entity\FacetSource;
+use Drupal\views\Entity\View;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Component\Plugin\PluginBase;
+
+/**
+ * Implements hook_help().
+ */
+function core_views_facets_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the core_views_facets module.
+    case 'help.page.core_views_facets':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Adds a facet source so exposed views filters can be used as facets as well.') . '</p>';
+      return $output;
+
+    default:
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function core_views_facets_block_view_facet_block_alter(array &$build, BlockPluginInterface $block) {
+  $facet_id = str_replace('facet_block' . PluginBase::DERIVATIVE_SEPARATOR, '', $block->getPluginId());
+  /** @var \Drupal\facets\FacetInterface $facet */
+  $facet = \Drupal::entityTypeManager()->getStorage('facets_facet')->load($facet_id);
+  if (!is_subclass_of($facet->getFacetSource(), '\Drupal\core_views_facets\Plugin\facets\facet_source\CoreViewsFacetSourceBase')) {
+    return;
+  }
+  else {
+    /** @var \Drupal\core_views_facets\Plugin\facets\facet_source\CoreViewsFacetSourceBase $facet_source */
+    $facet_source = $facet->getFacetSource();
+  }
+  /** @var \Drupal\views\ViewExecutable $view */
+  if ($view = $facet_source->getView()) {
+    if ($view->display_handler->ajaxEnabled()) {
+      $build['#attached']['library'][] = 'core_views_facets/core_views_facets.views.ajax';
+      $build['#attached']['drupalSettings']['core_views_facets'] = [
+        $facet_id => $facet_source->getAjaxSettingsByFacet($facet),
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * We implement this to make sure that a facet gets removed on view updates, so
+ * we don't get broken facet blocks.
+ */
+function core_views_facets_entity_presave(EntityInterface $entity) {
+  // Make sure that we only react on view entities with changed displays.
+  if ($entity instanceof View && !empty($entity->original)) {
+    if ($entity->original->get('display') != $entity->get('display')) {
+
+      /** @var \Drupal\facets\FacetSource\FacetSourcePluginManager $facet_source_plugin_manager */
+      $facet_source_plugin_manager = \Drupal::getContainer()
+        ->get('plugin.manager.facets.facet_source');
+      $definitions = $facet_source_plugin_manager->getDefinitions();
+
+      // Setup an array of sources that are deleted.
+      $sources = [];
+      foreach ($entity->original->get('display') as $k => $display) {
+        // Check if the current display is also a facet source plugin and that
+        // is removed from the view. We use the double underscore here to make
+        // sure that we use core convention of "plugin:derived_plugin".
+        foreach (['core_views_contextual_filter:', 'core_views_exposed_filter:'] as $facet_source) {
+          $facets_source_plugin_id = $facet_source . $entity->id() . '__' . $display['id'];
+          if (array_key_exists($facets_source_plugin_id, $definitions) && !array_key_exists($k, $entity->get('display'))) {
+            $entity_id = str_replace(':', '__', $facets_source_plugin_id);
+            $source_entity = FacetSource::load($entity_id);
+            $sources[] = $facets_source_plugin_id;
+            if (!is_null($source_entity)) {
+              $source_entity->delete();
+            }
+          }
+        }
+      }
+
+      // Loop over all deleted sources and delete the facets that were linked to
+      // that source.
+      if (count($sources) > 0) {
+        /** @var \Drupal\facets\FacetManager\DefaultFacetManager $fm */
+        $fm = \Drupal::getContainer()->get('facets.manager');
+        foreach ($sources as $source) {
+          $facets = $fm->getFacetsByFacetSourceId($source);
+          foreach ($facets as $facet) {
+            $facet->delete();
+          }
+        }
+      }
+      $facet_source_plugin_manager->clearCachedDefinitions();
+    }
+  }
+
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function core_views_facets_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['facets_facet']->setFormClass('edit', 'Drupal\core_views_facets\Form\ViewsFacetForm');
+}

@@ -1,0 +1,12 @@
+name: GraphQL Content Mutations
+type: module
+description: 'Automatically create GraphQL mutations for Drupal content entities.'
+package: GraphQL
+# core: 8.x
+dependencies:
+  - graphql_mutation
+# Information added by Drupal.org packaging script on 2017-07-04
+version: '8.x-3.x-dev'
+core: '8.x'
+project: 'graphql'
+datestamp: 1499178245

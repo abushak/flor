@@ -1,0 +1,21 @@
+{
+    "name": "drupal/commerce_variation_add_to_cart",
+    "description": "Provides separate Add to cart button for each product variation.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/commerce_variation_add_to_cart",
+    "authors": [
+        {
+            "name": "Goran Nikolovski",
+            "email": "nikolovski84@gmail.com",
+            "homepage": "http://gorannikolovski.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/commerce_variation_add_to_cart",
+        "email": "nikolovski84@gmail.com"
+    },
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {}
+}

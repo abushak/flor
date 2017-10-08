@@ -1,0 +1,7 @@
+responsive_menus.admin:
+  path: '/admin/config/user-interface/responsive_menus'
+  defaults:
+    _form: 'Drupal\responsive_menus\Form\ResponsiveMenusAdminForm'
+    _title: 'Responsive Menus'
+  requirements:
+    _permission: 'administer responsive menus'

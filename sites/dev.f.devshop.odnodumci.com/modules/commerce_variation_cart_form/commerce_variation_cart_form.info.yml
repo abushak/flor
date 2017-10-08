@@ -1,0 +1,16 @@
+name: Commerce Variation Cart Form
+type: module
+package: Commerce
+description: 'Provides a simple add-to-cart form in the product variation type manage display.'
+# core: 8.x
+dependencies:
+  - commerce
+  - commerce:commerce_product
+  - commerce:commerce_order
+  - commerce:commerce_cart
+
+# Information added by Drupal.org packaging script on 2017-03-16
+version: '8.x-1.0'
+core: '8.x'
+project: 'commerce_variation_cart_form'
+datestamp: 1489697585

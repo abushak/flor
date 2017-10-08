@@ -1,0 +1,4 @@
+services:
+  plugin.manager.responsive_menus:
+    class: Drupal\responsive_menus\ResponsiveMenusPluginManager
+    parent: default_plugin_manager

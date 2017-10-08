@@ -1,0 +1,12 @@
+name: GraphQL Core
+type: module
+description: 'Plugin based schema generation. To be merged into graphql module eventually.'
+package: GraphQL
+# core: 8.x
+dependencies:
+  - graphql
+# Information added by Drupal.org packaging script on 2017-07-04
+version: '8.x-3.x-dev'
+core: '8.x'
+project: 'graphql'
+datestamp: 1499178245

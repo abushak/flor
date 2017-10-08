@@ -1,0 +1,18 @@
+# Schema for the configuration files of the Responsive Menus module.
+
+responsive_menus.configuration:
+  type: config_object
+  label: 'Responsive Menus settings'
+  mapping:
+    style:
+      type: string
+      label: 'Responsive menu style'
+#    no_jquery_update:
+#      type: bool
+#      label: 'I will provide my own jQuery library.'
+    ignore_admin:
+      type: bool
+      label: 'Ignore admin pages?'
+    style_settings:
+      type: mapping
+      label: 'Style settings'

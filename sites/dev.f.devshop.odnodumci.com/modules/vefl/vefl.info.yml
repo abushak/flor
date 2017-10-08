@@ -1,0 +1,16 @@
+name: Views exposed form layout
+description: Provides functionality to output Views exposed filters in layout.
+package: Views
+
+type: module
+# core: 8.x
+
+dependencies:
+  - drupal:views
+  - layout_plugin:layout_plugin
+
+# Information added by Drupal.org packaging script on 2017-06-01
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'vefl'
+datestamp: 1496349245

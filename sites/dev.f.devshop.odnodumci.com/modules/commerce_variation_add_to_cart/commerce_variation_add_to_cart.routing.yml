@@ -1,0 +1,7 @@
+commerce_variation_add_to_cart.variation_cart:
+  path: '/commerce-variation-add-to-cart'
+  defaults:
+    _controller: '\Drupal\commerce_variation_add_to_cart\Controller\VariationAddToCart::addItem'
+    _title: 'Commerce Variation Add to Cart'
+  requirements:
+    _permission: 'access variation add to cart'

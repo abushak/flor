@@ -1,0 +1,247 @@
+<?php
+
+/**
+ * @file
+ * Responsify menus in Drupal.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function responsive_menus_help($path, $arg) {
+  switch ($path) {
+    // On the help overview page.
+    case 'help.page.responsive_menus':
+      return '<p>' . t('Responsify your menus! Using any jQuery compatible selector, make elements mobile friendly. Technically you could use this on more than menus... The <a href="@admin">administration page</a> provides settings to control which menus to control, what screen size to react to, and a few other options.', ['@admin' => Url::fromRoute('responsive_menus.admin')]) . '</p>';
+
+    // On the admin settings page.
+    case 'responsive_menus.admin':
+      return '<p>' . t('This page provides configuration options for responsive menus. You may configure any amount of menus to respond to any screen size by simply adding a jQuery compatible selector to the list below. There is also an option to ignore admin pages where you might not want responsive menus.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_libraries_info().
+ *
+ * @note : Libraries 2.x
+ */
+//function responsive_menus_libraries_info() {
+//  $libraries['ResponsiveMultiLevelMenu'] = array(
+//    'name' => 'ResponsiveMultiLevelMenu (codrops)',
+//    'vendor url' => 'http://tympanus.net/Development/ResponsiveMultiLevelMenu/',
+//    'download url' => 'http://tympanus.net/Development/ResponsiveMultiLevelMenu/ResponsiveMultiLevelMenu.zip',
+//    'version arguments' => array(
+//      'file' => 'js/jquery.dlmenu.js',
+//      'pattern' => '/v([\d\.]+)/',
+//      'lines' => 3,
+//      'columns' => 40,
+//    ),
+//    'files' => array(
+//      'js' => array(
+//        'js/modernizr.custom.js',
+//        'js/jquery.dlmenu.js',
+//      ),
+//      'css' => array(
+//        'css/component.css',
+//      ),
+//    ),
+//    'integration files' => array(
+//      'responsive_menus' => array(
+//        'js' => array('styles/ResponsiveMultiLevelMenu/js/responsive_menus_codrops_responsive_multi.js'),
+//      ),
+//    ),
+//  );
+
+//  $libraries['sidr'] = array(
+//    'name' => 'Sidr',
+//    'vendor url' => 'http://www.berriart.com/sidr',
+//    'download url' => 'https://github.com/artberri/sidr-package/archive/1.2.1.zip',
+//    'version arguments' => array(
+//      'file' => 'jquery.sidr.min.js',
+//      'pattern' => '/v([\d\.]+)/',
+//      'lines' => 1,
+//      'columns' => 40,
+//    ),
+//    'files' => array(
+//      'js' => array(
+//        'jquery.sidr.min.js',
+//      ),
+//      'css' => array(
+//        'stylesheets/jquery.sidr.dark.css',
+//      ),
+//    ),
+//    'integration files' => array(
+//      'responsive_menus' => array(
+//        'js' => array('styles/sidr/js/responsive_menus_sidr.js'),
+//      ),
+//    ),
+//  );
+//  $sidr_theme = variable_get('responsive_menus_sidr_menu_theme', 'dark');
+//  if ($sidr_theme == 'light') {
+//    $libraries['sidr']['files']['css'] = array('stylesheets/jquery.sidr.light.css');
+//  }
+//  elseif ($sidr_theme == 'custom') {
+//    unset($libraries['sidr']['files']['css']);
+//  }
+
+//  $libraries['GoogleNexusWebsiteMenu'] = array(
+//    'name' => 'Google Nexus (codrops)',
+//    'vendor url' => 'http://tympanus.net/codrops/2013/07/30/google-nexus-website-menu/',
+//    'download url' => 'http://tympanus.net/Tutorials/GoogleNexusWebsiteMenu/GoogleNexusWebsiteMenu.zip',
+//    'version arguments' => array(
+//      'file' => 'js/gnmenu.js',
+//      'pattern' => '/v([\d\.]+)/',
+//      'lines' => 2,
+//      'columns' => 40,
+//    ),
+//    'files' => array(
+//      'js' => array(
+//        'js/gnmenu.js',
+//        'js/classie.js',
+//      ),
+//      'css' => array(
+//        'css/component.css',
+//      ),
+//    ),
+//    'integration files' => array(
+//      'responsive_menus' => array(
+//        'js' => array('styles/google_nexus/js/responsive_menus_google_nexus.js'),
+//        'css' => array('styles/google_nexus/css/responsive_menus_google_nexus.css'),
+//      ),
+//    ),
+//  );
+
+//  return $libraries;
+//}
+
+/**
+ * Load a single style.
+ *
+ * @param string $style
+ *   Style id to be loaded.
+ *
+ * @return
+ */
+function responsive_menus_style_load($style, $jq_update_ignore) {
+  $link_generator = \Drupal::service('link_generator');
+  $styles = \Drupal::service('plugin.manager.responsive_menus')
+    ->getDefinitions();
+  $data = &drupal_static(__FUNCTION__, []);
+  if (!isset($data[$style]) && !empty($styles[$style])) {
+    $style_info = $styles[$style];
+    // @todo module_load_include() the .inc file for the style being loaded.
+    // Check for this style's requirements.
+    if (!empty($style_info['jquery_version'])) {
+      if (!$jq_update_ignore[1]) {
+        if (!\Drupal::moduleHandler()->moduleExists('jquery_update')) {
+          // jQuery Update not installed.
+          drupal_set_message(t('@style style requires !link set to version !version or higher.  Please enable jquery_update.', [
+            '@style'   => $style_info['name'],
+            '!link'    => $link_generator->generate(t('jQuery Update'), Url::fromUri('http://drupal.org/project/jquery_update')),
+            '!version' => $style_info['jquery_version'],
+          ]), 'warning');
+          $error = TRUE;
+        }
+//        elseif (version_compare(variable_get('jquery_update_jquery_version', '1.5'), $style_info['jquery_version'], '<')) {
+//          // jQuery Update version not high enough.
+//          drupal_set_message(t('@style style requires !link set to version !version or higher.', [
+//            '@style'   => $style_info['name'],
+//            '!version' => $style_info['jquery_version'],
+//            '!link'    => l(t('jQuery Update'), 'admin/config/development/jquery_update', ['query' => ['destination' => 'admin/config/user-interface/responsive_menus']]),
+//          ]), 'warning');
+//          $error = TRUE;
+//        }
+      }
+      else {
+        drupal_set_message(t('@style style requires !link library version !version or higher, but you have opted to provide your own library.  Please ensure you have the proper version of jQuery included.  (note: this is not an error)', [
+          '@style'   => $style_info['name'],
+          '!link'    => $link_generator->generate(t('jQuery'), Url::fromUri('http://jquery.com')),
+          '!version' => $style_info['jquery_version'],
+        ]), 'warning');
+      }
+    }
+    // For integration with Libraries.
+    if (isset($style_info['use_libraries'])) {
+      // Try libraries module.
+      if (\Drupal::moduleHandler()->moduleExists('libraries')) {
+//        if ($library = libraries_load($style_info['library'])) {
+//          if (!empty($library['error']) || empty($library['loaded'])) {
+//            drupal_set_message(t('!message !link and extract to your libraries directory as "@library_name". Example: sites/all/libraries/@library_name.  If you are getting "version detection" errors, check file permissions on the library.', [
+//              '!message'      => $library['error message'],
+//              '@library_name' => $style_info['library'],
+//              '!link'         => l(t('Download it'), $library['download url']),
+//            ]), 'error');
+//            $error = TRUE;
+//          }
+//        }
+      }
+      else {
+        // Libraries module not installed.
+        drupal_set_message(t('@style style requires !link module enabled.', [
+          '@style' => $style_info['name'],
+          '!link'  => $link_generator->generate(t('Libraries 2.x'), Url::fromUri('http://drupal.org/project/libraries')),
+        ]), 'warning');
+        $error = TRUE;
+      }
+    }
+    // Check for errors and load into $data if there are none.
+    if (!isset($error)) {
+      $data[$style] = $style_info;
+      return $data[$style];
+    }
+    else {
+      // Something was wrong loading this style.
+      drupal_set_message(t('Responsive Menus found a problem.  Please check the errors.'), 'error');
+      return FALSE;
+    }
+  }
+
+  else {
+    // This style is already loaded.
+    return $data[$style];
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function responsive_menus_page_attachments(array &$attachements) {
+  $config = \Drupal::config('responsive_menus.configuration');
+
+  // Load our style.
+  if (!isset($style)) {
+    $ignore_admin = $config->get('ignore_admin');
+    $path_is_admin = \Drupal::service('router.admin_context')
+      ->isAdminRoute();
+    if ($ignore_admin && $path_is_admin) {
+      return;
+    }
+    $style = $config->get('style');
+  }
+
+//  $jq_update_ignore = variable_get('responsive_menus_no_jquery_update', array(1 => 0));
+//  $style_info = responsive_menus_style_load($style, $jq_update_ignore);
+  $plugin_manager = \Drupal::service('plugin.manager.responsive_menus');
+  /** @var \Drupal\responsive_menus\ResponsiveMenusPluginInterface $style_plugin */
+  $style_plugin = $plugin_manager->createInstance($style, ['settings' => $config->get('style_settings')]);
+  if (!$style_plugin) {
+    return;
+  }
+
+  $data = &drupal_static(__FUNCTION__, array());
+  if (!isset($data['execute_index'])) {
+    $data['execute_index'] = -1;
+  }
+  $data['execute_index']++;
+
+  // Add library.
+  $attachements['#attached']['library'][] = $style_plugin->getPluginDefinition()['library'];
+
+  // Add JS settings.
+  $js_settings[$data['execute_index']] = $style_plugin->getJsSettings();
+  $js_settings[$data['execute_index']]['responsive_menus_style'] = $style;
+  \Drupal::moduleHandler()->alter('responsive_menus_execute', $js_settings);
+  $attachements['#attached']['drupalSettings']['responsive_menus'] = $js_settings;
+}

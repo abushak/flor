@@ -1,0 +1,5 @@
+commerce_currency_switcher.currency_switch_settings:
+  title: Currency switch settings
+  route_name: commerce_currency_switcher.currency_switch_settings
+  parent: entity.commerce_currency.collection
+  description: 'Currency switch settings.'

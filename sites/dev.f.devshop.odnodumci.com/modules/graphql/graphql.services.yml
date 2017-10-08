@@ -1,0 +1,119 @@
+parameters:
+  graphql.config:
+    # GraphQL schema cache:
+    #
+    # By default, the GraphQL schema gets cached. This can be disabled during development.
+    #
+    # @default true
+    cache: true
+
+    # GraphQL schema class to be used:
+    #
+    # By default, this uses the GraphQL schema provided by the module.
+    #
+    # @default \Drupal\graphql\Schema
+    schema_class: Drupal\graphql\GraphQL\Schema
+
+services:
+  cache.graphql_schema:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [graphql_schema]
+  cache.graphql_response:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [graphql_response]
+  cache.graphql_response_metadata:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [graphql_response_metadata]
+  cache_context.gql:
+    class: Drupal\graphql\Cache\Context\QueryCacheContext
+    arguments: ['@request_stack']
+    tags:
+      - { name: cache.context }
+  graphql.schema:
+    class: Drupal\graphql\GraphQL\Schema
+    factory: ['@graphql.schema_factory', getSchema]
+    tags:
+      - { name: graphql_extra_cache_metadata }
+  graphql.schema_factory:
+    class: Drupal\graphql\SchemaFactory
+    arguments: ['@cache_contexts_manager', '@request_stack', '@graphql.schema_provider', '@cache.graphql_schema', '%graphql.config%']
+    tags:
+        - { name: service_collector, tag: graphql_extra_schema_cache_metadata, call: addExtraCacheMetadata }
+  graphql.extra_schema_cache_metadata:
+    class: Drupal\Core\Cache\CacheableMetadata
+    calls:
+      - { method: addCacheContexts, arguments: [['languages:language_interface']] }
+      - { method: addCacheTags, arguments: [['graphql_schema']] }
+    tags:
+      - { name: graphql_extra_schema_cache_metadata }
+  graphql.schema_provider:
+    class: Drupal\graphql\SchemaProvider\SchemaProvider
+    arguments: ['%graphql.config%']
+    tags:
+        - { name: service_collector, tag: graphql_schema_provider, call: addSchemaProvider }
+  graphql.query_map_provider:
+    class: Drupal\graphql\QueryMapProvider\QueryMapProvider
+    tags:
+        - { name: service_collector, tag: graphql_query_map_provider, call: addQueryMapProvider }
+  graphql.reducer_manager:
+    class: Drupal\graphql\Reducers\ReducerManager
+    arguments: ['@service_container', '%graphql.reducers%']
+  graphql.page_display_variant_subscriber:
+    class: Drupal\graphql\EventSubscriber\ExplorerPageDisplayVariantSubscriber
+    tags:
+      - { name: event_subscriber }
+  graphql.cache_subscriber:
+    class: Drupal\graphql\EventSubscriber\CacheSubscriber
+    arguments: ['@graphql.request_policy', '@graphql.response_policy', '@current_route_match', '@request_stack', '@cache.graphql_response', '@cache.graphql_response_metadata', '@cache_contexts_manager']
+    tags:
+      - { name: service_collector, tag: graphql_extra_cache_metadata, call: addExtraCacheMetadata }
+      - { name: event_subscriber }
+  graphql.extra_cache_metadata:
+    class: Drupal\Core\Cache\CacheableMetadata
+    calls:
+      - { method: addCacheContexts, arguments: [['gql']] }
+      - { method: addCacheTags, arguments: [['graphql_response']] }
+    tags:
+      - { name: graphql_extra_cache_metadata }
+  graphql.request_policy:
+    class: Drupal\Core\PageCache\ChainRequestPolicy
+    tags:
+      - { name: service_collector, tag: graphql_request_policy, call: addPolicy }
+  graphql.response_policy:
+    class: Drupal\Core\PageCache\ChainResponsePolicy
+    tags:
+      - { name: service_collector, tag: graphql_response_policy, call: addPolicy }
+    lazy: true
+  graphql.request_policy.allow_no_session_open:
+    class: Drupal\Core\PageCache\RequestPolicy\NoSessionOpen
+    arguments: ['@session_configuration']
+    tags:
+      - { name: graphql_request_policy }
+  graphql.request_policy.deny_command_line:
+    class: Drupal\graphql\Cache\RequestPolicy\DenyCommandLine
+    tags:
+      - { name: graphql_request_policy }
+  graphql.request_policy.deny_unsafe_method_unless_query:
+    class: Drupal\graphql\Cache\RequestPolicy\DenyUnsafeMethodUnlessQuery
+    arguments: ['@path_processor_manager']
+    tags:
+      - { name: graphql_request_policy }
+  graphql.response_policy.deny_mutation:
+    class: Drupal\graphql\Cache\ResponsePolicy\DenyMutation
+    arguments: ['@current_route_match']
+    tags:
+      - { name: graphql_response_policy }
+  graphql.route_enhancer.query:
+    class: Drupal\graphql\Routing\QueryRouteEnhancer
+    arguments: ['@graphql.query_map_provider']
+    tags:
+      - { name: route_enhancer }
